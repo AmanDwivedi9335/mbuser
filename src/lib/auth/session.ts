@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 const SESSION_COOKIE_NAME = "medivault_session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 
-type SessionPayload = {
+export type SessionPayload = {
   userId: string;
   exp: number;
 };
@@ -29,7 +29,7 @@ function encode(payload: SessionPayload) {
   return `${body}.${signature}`;
 }
 
-function decode(token: string): SessionPayload | null {
+export function decodeSessionToken(token: string): SessionPayload | null {
   const [body, signature] = token.split(".");
   if (!body || !signature) return null;
 
@@ -68,10 +68,12 @@ export async function getSession() {
   const token = cookieStore.get(SESSION_COOKIE_NAME)?.value;
   if (!token) return null;
 
-  return decode(token);
+  return decodeSessionToken(token);
 }
 
 export async function clearSession() {
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE_NAME);
 }
+
+export { SESSION_COOKIE_NAME };
