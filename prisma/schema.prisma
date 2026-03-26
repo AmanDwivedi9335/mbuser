@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum HouseholdRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum ProfileRelationship {
+  SELF
+  SPOUSE
+  CHILD
+  PARENT
+  DEPENDENT
+  OTHER
+}
+
+model User {
+  id                 String            @id @default(cuid())
+  firebaseUid        String            @unique
+  email              String            @unique
+  displayName        String?
+  photoUrl           String?
+  emailVerified      Boolean           @default(false)
+  isActive           Boolean           @default(true)
+  lastLoginAt        DateTime?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  householdMemberships HouseholdMember[]
+  createdProfiles    Profile[]         @relation("ProfileCreatedBy")
+}
+
+model Household {
+  id                 String            @id @default(cuid())
+  name               String
+  timezone           String            @default("UTC")
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  members            HouseholdMember[]
+  profiles           Profile[]
+
+  @@index([createdAt])
+}
+
+model HouseholdMember {
+  id                 String            @id @default(cuid())
+  householdId        String
+  userId             String
+  role               HouseholdRole     @default(MEMBER)
+  isDefault          Boolean           @default(false)
+  invitedAt          DateTime?
+  joinedAt           DateTime          @default(now())
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  household          Household         @relation(fields: [householdId], references: [id], onDelete: Cascade)
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([householdId, userId])
+  @@index([userId])
+}
+
+model Profile {
+  id                 String              @id @default(cuid())
+  householdId        String
+  createdByUserId    String
+  firstName          String
+  lastName           String
+  dateOfBirth        DateTime?
+  relationship       ProfileRelationship @default(SELF)
+  isPrimary          Boolean             @default(false)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  household          Household           @relation(fields: [householdId], references: [id], onDelete: Cascade)
+  createdBy          User                @relation("ProfileCreatedBy", fields: [createdByUserId], references: [id], onDelete: Restrict)
+
+  @@index([householdId])
+  @@index([createdByUserId])
+}
