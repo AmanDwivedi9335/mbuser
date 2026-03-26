@@ -34,6 +34,8 @@ export async function GET() {
       displayName: user.displayName,
       photoUrl: user.photoUrl,
       emailVerified: user.emailVerified,
+      onboardingCompleted: user.onboardingCompleted,
+      onboardingStep: user.onboardingStep,
     },
     household: defaultMembership
       ? {

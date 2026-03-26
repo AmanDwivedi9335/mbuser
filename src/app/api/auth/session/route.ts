@@ -38,30 +38,9 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const membershipCount = await prisma.householdMember.count({
-      where: { userId: user.id },
-    });
-
-    if (membershipCount === 0) {
-      const householdName = decoded.name ? `${decoded.name.split(" ")[0]}'s Household` : "My Household";
-
-      await prisma.household.create({
-        data: {
-          name: householdName,
-          members: {
-            create: {
-              userId: user.id,
-              role: "OWNER",
-              isDefault: true,
-            },
-          },
-        },
-      });
-    }
-
     await createSession(user.id);
 
-    return NextResponse.json({ ok: true, userId: user.id });
+    return NextResponse.json({ ok: true, userId: user.id, onboardingCompleted: user.onboardingCompleted });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Authentication failed." },
