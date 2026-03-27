@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 
+import { DashboardShell } from "@/features/dashboard/components/dashboard-shell";
 import { requireSessionUser } from "@/lib/auth/require-user";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -13,5 +14,5 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect("/onboarding");
   }
 
-  return <>{children}</>;
+  return <DashboardShell>{children}</DashboardShell>;
 }
