@@ -1,8 +1,21 @@
+"use client";
+
+import { useCurrentProfile } from "@/features/dashboard/hooks/use-current-profile";
+import { useCurrentUser } from "@/features/dashboard/hooks/use-current-user";
+
 export default function DashboardPage() {
+  const { data, isLoading: userLoading } = useCurrentUser();
+  const { selectedProfile, isLoading: profileLoading } = useCurrentProfile();
+
+  if (userLoading || profileLoading) {
+    return <p className="text-app-muted">Loading dashboard...</p>;
+  }
+
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-16">
-      <h1 className="text-3xl font-bold text-app-text">Dashboard</h1>
-      <p className="mt-2 text-app-muted">You are authenticated through Medivault session middleware.</p>
-    </main>
+    <section className="space-y-2">
+      <h1 className="text-2xl font-bold">Welcome to Medivault</h1>
+      <p className="text-app-muted">Signed in as {data?.user.displayName ?? data?.user.email ?? "User"}</p>
+      <p className="text-app-muted">Current profile: {selectedProfile?.fullName ?? "No profile selected"}</p>
+    </section>
   );
 }
