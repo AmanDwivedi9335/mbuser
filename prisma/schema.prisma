@@ -51,6 +51,27 @@ enum RecordCategory {
   OTHER
 }
 
+enum MedicationFrequencyType {
+  ONCE_DAILY
+  TWICE_DAILY
+  THRICE_DAILY
+  EVERY_X_HOURS
+  WEEKLY
+  CUSTOM
+}
+
+enum MedicationLogStatus {
+  TAKEN
+  SKIPPED
+  MISSED
+}
+
+enum ReminderStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
 model User {
   id                       String          @id @default(cuid())
   firebaseUid              String          @unique
@@ -129,10 +150,83 @@ model Profile {
   createdBy  User      @relation("ProfileCreatedBy", fields: [createdByUserId], references: [id], onDelete: Restrict)
   linkedUser User?     @relation("ProfileLinkedUser", fields: [linkedUserId], references: [id], onDelete: SetNull)
   records    Record[]
+  medications Medication[]
+  medicationLogs MedicationLog[]
+  reminders ReminderQueue[]
 
   @@index([householdId])
   @@index([createdByUserId])
   @@index([linkedUserId])
+}
+
+model Medication {
+  id            String                  @id @default(cuid())
+  profileId     String
+  name          String
+  dosage        Float
+  unit          String
+  instructions  String?                 @db.Text
+  startDate     DateTime
+  endDate       DateTime?
+  frequencyType MedicationFrequencyType
+  isActive      Boolean                 @default(true)
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+
+  profile   Profile               @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  schedules MedicationSchedule[]
+  logs      MedicationLog[]
+  reminders ReminderQueue[]
+
+  @@index([profileId])
+  @@index([isActive])
+}
+
+model MedicationSchedule {
+  id            String   @id @default(cuid())
+  medicationId  String
+  time          String
+  dayOfWeek     Int?
+  intervalHours Int?
+  createdAt     DateTime @default(now())
+
+  medication Medication @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+
+  @@index([medicationId])
+}
+
+model MedicationLog {
+  id           String              @id @default(cuid())
+  medicationId String
+  profileId    String
+  scheduledAt  DateTime
+  takenAt      DateTime?
+  status       MedicationLogStatus
+  createdAt    DateTime            @default(now())
+
+  medication Medication @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+  profile    Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@index([medicationId])
+  @@index([scheduledAt])
+}
+
+model ReminderQueue {
+  id            String         @id @default(cuid())
+  profileId     String
+  medicationId  String
+  scheduledTime DateTime
+  status        ReminderStatus @default(PENDING)
+  createdAt     DateTime       @default(now())
+
+  medication Medication @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+  profile    Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@index([medicationId])
+  @@index([scheduledTime])
+  @@unique([medicationId, scheduledTime])
 }
 
 model Record {
