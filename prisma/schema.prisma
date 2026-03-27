@@ -40,6 +40,17 @@ enum ProfileGender {
   PREFER_NOT_TO_SAY
 }
 
+enum RecordCategory {
+  LAB_RESULT
+  PRESCRIPTION
+  VACCINATION
+  IMAGING
+  DISCHARGE_SUMMARY
+  BILLING
+  INSURANCE
+  OTHER
+}
+
 model User {
   id                       String          @id @default(cuid())
   firebaseUid              String          @unique
@@ -117,8 +128,49 @@ model Profile {
   household  Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
   createdBy  User      @relation("ProfileCreatedBy", fields: [createdByUserId], references: [id], onDelete: Restrict)
   linkedUser User?     @relation("ProfileLinkedUser", fields: [linkedUserId], references: [id], onDelete: SetNull)
+  records    Record[]
 
   @@index([householdId])
   @@index([createdByUserId])
   @@index([linkedUserId])
+}
+
+model Record {
+  id            String         @id @default(cuid())
+  profileId     String
+  category      RecordCategory @default(OTHER)
+  title         String
+  providerName  String?
+  recordDate    DateTime?
+  notes         String?        @db.Text
+  extractedText String?        @db.LongText
+  tags          Json?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  deletedAt     DateTime?
+
+  profile Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  files   RecordFile[]
+
+  @@index([profileId])
+  @@index([category])
+  @@index([recordDate])
+  @@index([deletedAt])
+  @@fulltext([title, notes, extractedText])
+}
+
+model RecordFile {
+  id           String   @id @default(cuid())
+  recordId     String
+  driveFileId  String
+  mimeType     String
+  originalName String
+  size         Int
+  encryptionIv String
+  checksum     String
+  createdAt    DateTime @default(now())
+
+  record Record @relation(fields: [recordId], references: [id], onDelete: Cascade)
+
+  @@index([recordId])
 }
