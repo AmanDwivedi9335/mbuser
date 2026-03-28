@@ -45,3 +45,14 @@ export async function loginWithGoogle() {
 export async function sendPasswordReset(email: string) {
   await sendPasswordResetEmail(getFirebaseClientAuth(), email);
 }
+
+export async function loginAsGuest() {
+  const response = await fetch("/api/auth/guest-session", {
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+    throw new Error(payload?.error ?? "Failed to start guest session.");
+  }
+}

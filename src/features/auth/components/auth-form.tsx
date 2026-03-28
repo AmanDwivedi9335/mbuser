@@ -3,7 +3,7 @@
 import { zodResolver } from "@/features/auth/schemas/zod-resolver";
 import { loginSchema, signupSchema, type LoginInput, type SignupInput } from "@/features/auth/schemas/auth";
 import { useAuthSubmit } from "@/features/auth/hooks/use-auth-submit";
-import { loginWithEmail, loginWithGoogle, signupWithEmail } from "@/features/auth/services/client-auth";
+import { loginAsGuest, loginWithEmail, loginWithGoogle, signupWithEmail } from "@/features/auth/services/client-auth";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -30,6 +30,12 @@ export function AuthForm({ mode }: AuthFormProps) {
 
   const { isLoading: googleLoading, run: runGoogle, error: googleError } = useAuthSubmit(async () => {
     await loginWithGoogle();
+    router.push("/dashboard");
+    router.refresh();
+  });
+
+  const { isLoading: guestLoading, run: runGuest, error: guestError } = useAuthSubmit(async () => {
+    await loginAsGuest();
     router.push("/dashboard");
     router.refresh();
   });
@@ -77,10 +83,10 @@ export function AuthForm({ mode }: AuthFormProps) {
           <p className="mt-1 text-sm text-red-600">{form.formState.errors.password?.message}</p>
         </div>
 
-        {(error || googleError) && <p className="text-sm text-red-600">{error ?? googleError}</p>}
+        {(error || googleError || guestError) && <p className="text-sm text-red-600">{error ?? googleError ?? guestError}</p>}
 
         <button
-          disabled={isLoading || googleLoading}
+          disabled={isLoading || googleLoading || guestLoading}
           type="submit"
           className="w-full rounded-lg bg-app-text px-4 py-2 font-semibold text-white disabled:opacity-60"
         >
@@ -89,13 +95,24 @@ export function AuthForm({ mode }: AuthFormProps) {
       </form>
 
       <button
-        disabled={isLoading || googleLoading}
+        disabled={isLoading || googleLoading || guestLoading}
         type="button"
         className="mt-3 w-full rounded-lg border border-gray-300 px-4 py-2 font-semibold"
         onClick={() => void runGoogle()}
       >
         Continue with Google
       </button>
+
+      {!isSignup && (
+        <button
+          disabled={isLoading || googleLoading || guestLoading}
+          type="button"
+          className="mt-3 w-full rounded-lg border border-gray-300 px-4 py-2 font-semibold"
+          onClick={() => void runGuest()}
+        >
+          Continue as Guest
+        </button>
+      )}
     </div>
   );
 }
