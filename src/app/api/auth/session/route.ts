@@ -1,9 +1,19 @@
+import { Prisma } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 import { createSession } from "@/lib/auth/session";
 import { verifyFirebaseIdToken } from "@/lib/firebase/admin";
 
 export const runtime = "nodejs";
+
+function isMissingUserTableError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError
+    && error.code === "P2021"
+    && typeof error.meta?.table === "string"
+    && error.meta.table.includes("User")
+  );
+}
 
 export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as { idToken?: string } | null;
@@ -45,6 +55,15 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true, userId: user.id, onboardingCompleted: user.onboardingCompleted });
   } catch (error) {
+    if (isMissingUserTableError(error)) {
+      return NextResponse.json(
+        {
+          error: "Database schema is not initialized. Run `npx prisma db push` (or your migration command) and restart the app.",
+        },
+        { status: 503 },
+      );
+    }
+
     const message = error instanceof Error ? error.message : "Authentication failed.";
     const status = message.includes("required") ? 500 : 401;
 
