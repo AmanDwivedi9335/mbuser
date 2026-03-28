@@ -13,8 +13,15 @@ type StepPrimaryProfileProps = {
 };
 
 export function StepPrimaryProfile({ defaultValues, isSaving, onBack, onNext }: StepPrimaryProfileProps) {
+  const normalizedDefaultValues = defaultValues
+    ? {
+        ...defaultValues,
+        bloodGroup: defaultValues.bloodGroup ?? undefined,
+      }
+    : undefined;
+
   const form = useForm<PrimaryProfileSchemaInput>({
-    defaultValues: defaultValues ?? {
+    defaultValues: normalizedDefaultValues ?? {
       fullName: "",
       relation: "SELF",
       dob: "",
