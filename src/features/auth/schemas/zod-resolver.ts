@@ -1,7 +1,7 @@
-import type { FieldValues, Resolver } from "react-hook-form";
-import type { ZodTypeAny } from "zod";
+import type { Resolver } from "react-hook-form";
+import type { z, ZodTypeAny } from "zod";
 
-export function zodResolver<TSchema extends ZodTypeAny>(schema: TSchema): Resolver<FieldValues> {
+export function zodResolver<TSchema extends ZodTypeAny>(schema: TSchema): Resolver<z.input<TSchema>> {
   return async (values) => {
     const result = schema.safeParse(values);
 
