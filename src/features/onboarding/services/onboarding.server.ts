@@ -1,4 +1,4 @@
-import { OnboardingStep, type Prisma, ProfileRelation } from "@prisma/client";
+import { OnboardingStep, Prisma, ProfileRelation } from "@prisma/client";
 
 import { prisma } from "@/lib/db/prisma";
 import type {
