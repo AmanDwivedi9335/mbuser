@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextRequest, NextResponse } from "next/server";
 
 import { createSession } from "@/lib/auth/session";
@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 function isMissingUserTableError(error: unknown) {
   return (
-    error instanceof Prisma.PrismaClientKnownRequestError
+    error instanceof PrismaClientKnownRequestError
     && error.code === "P2021"
     && typeof error.meta?.table === "string"
     && error.meta.table.includes("User")
