@@ -3,25 +3,19 @@
 import {
   CalendarIcon,
   CloseIcon,
-  FileIcon,
-  HeartIcon,
+  FolderIcon,
   HomeIcon,
-  PillIcon,
-  SettingsIcon,
-  ShieldIcon,
   UsersIcon,
+  PulseIcon,
 } from "@/components/ui/icons";
 import { NavItem } from "@/features/dashboard/components/nav-item";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
-  { href: "/dashboard/profiles", label: "Profiles", icon: UsersIcon },
-  { href: "/dashboard/records", label: "Records", icon: FileIcon },
-  { href: "/dashboard/medications", label: "Medications", icon: PillIcon },
+  { href: "/dashboard", label: "Home", icon: HomeIcon },
+  { href: "/dashboard/records", label: "Records", icon: FolderIcon },
+  { href: "/dashboard/profiles", label: "Family", icon: UsersIcon },
+  { href: "/dashboard/vitals", label: "Analytics", icon: PulseIcon },
   { href: "/dashboard/appointments", label: "Appointments", icon: CalendarIcon },
-  { href: "/dashboard/vitals", label: "Vitals", icon: HeartIcon },
-  { href: "/dashboard/insurance", label: "Insurance", icon: ShieldIcon },
-  { href: "/dashboard/settings", label: "Settings", icon: SettingsIcon },
 ];
 
 type SidebarProps = {
@@ -32,13 +26,16 @@ type SidebarProps = {
 export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
   return (
     <>
-      <aside className="hidden w-64 shrink-0 border-r border-app-muted/20 bg-app-bg p-4 lg:block lg:h-screen lg:sticky lg:top-0">
-        <div className="mb-6 px-3 text-lg font-semibold">Medivault</div>
+      <aside className="hidden w-64 shrink-0 border-r border-app-muted/20 bg-app-bg p-4 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col">
+        <div className="mb-8 px-3 pt-2 text-4xl font-semibold tracking-tight">MediVault</div>
         <nav className="space-y-1" aria-label="Dashboard navigation">
           {NAV_ITEMS.map((item) => (
             <NavItem key={item.href} href={item.href} label={item.label} icon={item.icon} />
           ))}
         </nav>
+        <button type="button" className="mt-auto hidden w-full rounded-full bg-[#12baa9] px-5 py-3 text-lg font-semibold text-white shadow-sm lg:block">
+          Upload Record
+        </button>
       </aside>
 
       {mobileOpen ? (
@@ -53,7 +50,7 @@ export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
         aria-label="Mobile dashboard navigation"
       >
         <div className="mb-6 flex items-center justify-between px-3">
-          <span className="text-lg font-semibold">Medivault</span>
+          <span className="text-lg font-semibold">MediVault</span>
           <button
             type="button"
             onClick={onCloseMobile}

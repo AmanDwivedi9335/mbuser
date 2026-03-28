@@ -21,8 +21,8 @@ export function NavItem({ href, label, icon: Icon, onClick }: NavItemProps) {
       href={href}
       onClick={onClick}
       className={[
-        "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-        isActive ? "bg-app-text text-app-bg" : "text-app-text hover:bg-app-surface",
+        "flex items-center gap-3 rounded-full px-4 py-3 text-sm font-medium transition-colors",
+        isActive ? "bg-[#dfe8f5] text-[#2f5fdb]" : "text-[#5b6e8a] hover:bg-white/70",
       ].join(" ")}
       aria-current={isActive ? "page" : undefined}
     >

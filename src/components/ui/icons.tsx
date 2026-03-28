@@ -96,3 +96,36 @@ export const CloseIcon: IconComponent = (props) => (
     <path d="m18 6-12 12M6 6l12 12" />
   </BaseIcon>
 );
+
+export const FolderIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+  </BaseIcon>
+);
+
+export const PulseIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <path d="M3 12h4l3-7 4 14 3-7h4" />
+  </BaseIcon>
+);
+
+export const HelpIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.1 9a3 3 0 1 1 5.2 2c-.6.6-1.3 1-1.8 1.5-.3.3-.5.7-.5 1.5" />
+    <path d="M12 17h.01" />
+  </BaseIcon>
+);
+
+export const ClockIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v6l4 2" />
+  </BaseIcon>
+);
+
+export const PlusIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <path d="M12 5v14M5 12h14" />
+  </BaseIcon>
+);
