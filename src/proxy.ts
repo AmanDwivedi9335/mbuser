@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 
 import { requireSessionMiddleware } from "@/lib/auth/middleware";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   return requireSessionMiddleware(request);
 }
 

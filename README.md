@@ -59,13 +59,19 @@ cp .env.example .env
 npm install
 ```
 
-3. Generate Prisma client:
+3. Push the Prisma schema to your database (required before auth routes can write/read users):
+
+```bash
+npm run prisma:push
+```
+
+4. Generate Prisma client:
 
 ```bash
 npm run prisma:generate
 ```
 
-4. Run the app:
+5. Run the app:
 
 ```bash
 npm run dev
