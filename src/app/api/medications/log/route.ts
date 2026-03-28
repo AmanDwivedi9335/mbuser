@@ -5,6 +5,8 @@ import { parseQuery } from "@/lib/utils/validations/parse-query";
 import { listMedicationLogsQuerySchema, medicationLogSchema } from "@/features/medications/schemas/medication.schema";
 import { createMedicationLog, listMedicationLogs } from "@/features/medications/services/medications.server";
 
+type MedicationLogListItem = Awaited<ReturnType<typeof listMedicationLogs>>[number];
+
 export async function POST(request: Request) {
   const user = await requireSessionUser();
 
@@ -50,7 +52,7 @@ export async function GET(request: Request) {
     });
 
     return NextResponse.json({
-      logs: logs.map((log) => ({
+      logs: logs.map((log: MedicationLogListItem) => ({
         ...log,
         scheduledAt: log.scheduledAt.toISOString(),
         takenAt: log.takenAt ? log.takenAt.toISOString() : null,
