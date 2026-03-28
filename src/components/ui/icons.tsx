@@ -17,6 +17,13 @@ export const HomeIcon: IconComponent = (props) => (
   </BaseIcon>
 );
 
+export const AddIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 8v8M8 12h8" />
+  </BaseIcon>
+);
+
 export const UsersIcon: IconComponent = (props) => (
   <BaseIcon {...props}>
     <circle cx="9" cy="8" r="3" />

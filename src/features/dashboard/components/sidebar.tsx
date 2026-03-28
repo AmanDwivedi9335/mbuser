@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  AddIcon,
   CalendarIcon,
   CloseIcon,
   FileIcon,
@@ -15,6 +16,7 @@ import { NavItem } from "@/features/dashboard/components/nav-item";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
+  { href: "/dashboard/add-new", label: "Add New", icon: AddIcon },
   { href: "/dashboard/profiles", label: "Profiles", icon: UsersIcon },
   { href: "/dashboard/records", label: "Records", icon: FileIcon },
   { href: "/dashboard/medications", label: "Medications", icon: PillIcon },
