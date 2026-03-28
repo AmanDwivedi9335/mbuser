@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { createSession } from "@/lib/auth/session";
-import { prisma } from "@/lib/db/prisma";
 import { verifyFirebaseIdToken } from "@/lib/firebase/admin";
+
+export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as { idToken?: string } | null;
@@ -18,6 +19,8 @@ export async function POST(request: NextRequest) {
     if (!email) {
       return NextResponse.json({ error: "Token is missing email." }, { status: 400 });
     }
+
+    const { prisma } = await import("@/lib/db/prisma");
 
     const user = await prisma.user.upsert({
       where: { firebaseUid: decoded.uid },
@@ -42,9 +45,12 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true, userId: user.id, onboardingCompleted: user.onboardingCompleted });
   } catch (error) {
+    const message = error instanceof Error ? error.message : "Authentication failed.";
+    const status = message.includes("required") ? 500 : 401;
+
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Authentication failed." },
-      { status: 401 },
+      { error: message },
+      { status },
     );
   }
 }
