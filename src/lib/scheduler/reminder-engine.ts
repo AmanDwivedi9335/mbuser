@@ -1,4 +1,4 @@
-import { ReminderStatus } from "@prisma/client";
+import { ReminderStatus, ReminderType } from "@prisma/client";
 
 import { prisma } from "@/lib/db/prisma";
 import { sendEmailReminder } from "@/lib/notifications/email";
@@ -95,6 +95,7 @@ export async function runReminderDispatch(limit = 100) {
     },
     include: {
       medication: true,
+      appointment: true,
       profile: {
         include: {
           household: {
@@ -119,8 +120,18 @@ export async function runReminderDispatch(limit = 100) {
   for (const queueItem of pending) {
     const recipientEmail = queueItem.profile.household.members[0]?.user.email;
     const recipientPushToken = null;
-    const title = "Medication reminder";
-    const body = `Time to take ${queueItem.medication.name} (${queueItem.medication.dosage}${queueItem.medication.unit})`;
+
+    const title =
+      queueItem.title ??
+      (queueItem.reminderType === ReminderType.MEDICATION ? "Medication reminder" : "Appointment reminder");
+
+    const body =
+      queueItem.body ??
+      (queueItem.reminderType === ReminderType.MEDICATION && queueItem.medication
+        ? `Time to take ${queueItem.medication.name} (${queueItem.medication.dosage}${queueItem.medication.unit})`
+        : queueItem.appointment
+          ? `Upcoming appointment: ${queueItem.appointment.title}`
+          : "You have an upcoming reminder.");
 
     const pushResult = await sendPushReminder({ token: recipientPushToken, title, body });
 
