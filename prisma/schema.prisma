@@ -182,6 +182,7 @@ model Profile {
   medications Medication[]
   medicationLogs MedicationLog[]
   reminders ReminderQueue[]
+  appointments Appointment[]
   vitals    Vital[]
 
   @@index([householdId])
