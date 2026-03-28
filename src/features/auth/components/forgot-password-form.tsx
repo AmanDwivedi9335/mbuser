@@ -38,7 +38,7 @@ export function ForgotPasswordForm() {
           <p className="mt-1 text-sm text-red-600">{form.formState.errors.email?.message}</p>
         </div>
         {message && <p className="text-sm text-green-700">{message}</p>}
-        <button type="submit" className="w-full rounded-lg bg-app-text px-4 py-2 font-semibold text-white">
+        <button type="submit" className="btn-brand w-full rounded-lg px-4 py-2 font-semibold">
           Send reset link
         </button>
       </form>

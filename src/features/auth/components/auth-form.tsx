@@ -88,7 +88,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <button
           disabled={isLoading || googleLoading || guestLoading}
           type="submit"
-          className="w-full rounded-lg bg-app-text px-4 py-2 font-semibold text-white disabled:opacity-60"
+          className="btn-brand w-full rounded-lg px-4 py-2 font-semibold"
         >
           {isSignup ? "Sign up" : "Log in"}
         </button>
@@ -97,7 +97,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       <button
         disabled={isLoading || googleLoading || guestLoading}
         type="button"
-        className="mt-3 w-full rounded-lg border border-gray-300 px-4 py-2 font-semibold"
+        className="btn-brand mt-3 w-full rounded-lg px-4 py-2 font-semibold"
         onClick={() => void runGoogle()}
       >
         Continue with Google
@@ -107,7 +107,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <button
           disabled={isLoading || googleLoading || guestLoading}
           type="button"
-          className="mt-3 w-full rounded-lg border border-gray-300 px-4 py-2 font-semibold"
+          className="btn-brand mt-3 w-full rounded-lg px-4 py-2 font-semibold"
           onClick={() => void runGuest()}
         >
           Continue as Guest
