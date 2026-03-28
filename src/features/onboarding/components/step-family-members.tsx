@@ -13,9 +13,18 @@ type StepFamilyMembersProps = {
 };
 
 export function StepFamilyMembers({ defaultValues, isSaving, onBack, onNext }: StepFamilyMembersProps) {
+  const normalizedDefaultValues: FamilyMembersSchemaInput["members"] = defaultValues.map((member) => ({
+    id: member.id,
+    fullName: member.fullName,
+    relation: member.relation,
+    dob: member.dob ?? "",
+    gender: member.gender ?? "",
+    bloodGroup: member.bloodGroup ?? "",
+  }));
+
   const form = useForm<FamilyMembersSchemaInput>({
     defaultValues: {
-      members: defaultValues,
+      members: normalizedDefaultValues,
     },
   });
 
