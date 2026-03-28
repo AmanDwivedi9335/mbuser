@@ -1,8 +1,14 @@
-import { AppointmentStatus, ReminderStatus, ReminderType } from "@prisma/client";
+import { ReminderStatus, ReminderType } from "@prisma/client";
 
 import { prisma } from "@/lib/db/prisma";
 
-import type { AppointmentItem } from "@/features/appointments/types/appointment.types";
+import type { AppointmentItem, AppointmentStatus } from "@/features/appointments/types/appointment.types";
+
+const APPOINTMENT_STATUS = {
+  UPCOMING: "UPCOMING",
+  COMPLETED: "COMPLETED",
+  CANCELLED: "CANCELLED",
+} as const satisfies Record<AppointmentStatus, AppointmentStatus>;
 
 type MappedAppointment = Awaited<ReturnType<typeof getAppointmentById>>;
 
@@ -63,7 +69,7 @@ function mapAppointment(appointment: {
       content: note.content,
       createdAt: note.createdAt.toISOString(),
     })),
-    overdueFollowUp: Boolean(appointment.followUpAt && appointment.followUpAt < today && appointment.status !== AppointmentStatus.COMPLETED),
+    overdueFollowUp: Boolean(appointment.followUpAt && appointment.followUpAt < today && appointment.status !== APPOINTMENT_STATUS.COMPLETED),
     isToday: appointment.appointmentAt >= today && appointment.appointmentAt < tomorrow,
   };
 }
@@ -118,7 +124,7 @@ export async function createAppointmentForProfile(params: {
       specialty: params.input.specialty,
       appointmentAt: new Date(params.input.appointmentAt),
       followUpAt: params.input.followUpAt ? new Date(params.input.followUpAt) : null,
-      status: AppointmentStatus.UPCOMING,
+      status: APPOINTMENT_STATUS.UPCOMING,
     },
     include: {
       appointmentNotes: {
@@ -248,9 +254,9 @@ export async function getAppointmentById(params: { userId: string; appointmentId
 }
 
 const VALID_TRANSITIONS: Record<AppointmentStatus, AppointmentStatus[]> = {
-  UPCOMING: [AppointmentStatus.COMPLETED, AppointmentStatus.CANCELLED],
-  COMPLETED: [AppointmentStatus.UPCOMING],
-  CANCELLED: [AppointmentStatus.UPCOMING],
+  UPCOMING: [APPOINTMENT_STATUS.COMPLETED, APPOINTMENT_STATUS.CANCELLED],
+  COMPLETED: [APPOINTMENT_STATUS.UPCOMING],
+  CANCELLED: [APPOINTMENT_STATUS.UPCOMING],
 };
 
 export async function updateAppointmentStatus(params: { userId: string; appointmentId: string; status: AppointmentStatus }) {
