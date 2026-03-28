@@ -4,6 +4,9 @@ import { cookies } from "next/headers";
 
 const SESSION_COOKIE_NAME = "medivault_session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
+const DEV_SESSION_SECRET = "dev-only-session-secret-change-me-before-production";
+
+let hasWarnedAboutDevSecret = false;
 
 export type SessionPayload = {
   userId: string;
@@ -12,10 +15,22 @@ export type SessionPayload = {
 
 function getSessionSecret() {
   const secret = process.env.SESSION_SECRET;
-  if (!secret || secret.length < 32) {
-    throw new Error("SESSION_SECRET must be set and at least 32 characters.");
+  if (secret && secret.length >= 32) {
+    return secret;
   }
-  return secret;
+
+  if (process.env.NODE_ENV !== "production") {
+    if (!hasWarnedAboutDevSecret) {
+      hasWarnedAboutDevSecret = true;
+      console.warn(
+        "SESSION_SECRET is missing or too short. Falling back to a development-only secret. " +
+          "Set SESSION_SECRET (32+ chars) before deploying.",
+      );
+    }
+    return DEV_SESSION_SECRET;
+  }
+
+  throw new Error("SESSION_SECRET must be set and at least 32 characters.");
 }
 
 function sign(value: string) {
