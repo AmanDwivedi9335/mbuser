@@ -1,4 +1,3 @@
-import { HouseholdRole, ProfileRelation } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 import { createSession } from "@/lib/auth/session";
@@ -46,7 +45,7 @@ export async function POST() {
       members: {
         create: {
           userId: user.id,
-          role: HouseholdRole.OWNER,
+          role: "OWNER",
           isDefault: true,
         },
       },
@@ -76,7 +75,7 @@ export async function POST() {
         createdByUserId: user.id,
         linkedUserId: user.id,
         fullName: GUEST_DISPLAY_NAME,
-        relation: ProfileRelation.SELF,
+        relation: "SELF",
         isPrimary: true,
       },
     });
