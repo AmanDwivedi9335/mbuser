@@ -84,6 +84,23 @@ enum AppointmentStatus {
   CANCELLED
 }
 
+enum VitalType {
+  BP
+  HR
+  WEIGHT
+  SUGAR
+  SLEEP
+  STEPS
+  SPO2
+  TEMP
+}
+
+enum VitalSource {
+  MANUAL
+  CSV
+  WEARABLE
+}
+
 model User {
   id                       String          @id @default(cuid())
   firebaseUid              String          @unique
@@ -165,6 +182,7 @@ model Profile {
   medications Medication[]
   medicationLogs MedicationLog[]
   reminders ReminderQueue[]
+  vitals    Vital[]
 
   @@index([householdId])
   @@index([createdByUserId])
@@ -324,4 +342,22 @@ model RecordFile {
   record Record @relation(fields: [recordId], references: [id], onDelete: Cascade)
 
   @@index([recordId])
+}
+
+model Vital {
+  id         String      @id @default(cuid())
+  profileId  String
+  type       VitalType
+  value1     Float
+  value2     Float?
+  unit       String
+  source     VitalSource @default(MANUAL)
+  recordedAt DateTime
+  createdAt  DateTime    @default(now())
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@index([type])
+  @@index([recordedAt])
 }
