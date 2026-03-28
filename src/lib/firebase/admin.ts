@@ -23,10 +23,19 @@ function assertProjectId() {
 export async function verifyFirebaseIdToken(idToken: string): Promise<FirebaseToken> {
   assertProjectId();
 
-  const certs = await googleClient.getFederatedSignonCertsAsync();
+  const certsResponse = await fetch(FIREBASE_CERTS_URL, { cache: "no-store" });
+  if (!certsResponse.ok) {
+    throw new Error("Unable to fetch Firebase signing certificates.");
+  }
+
+  const certs = (await certsResponse.json().catch(() => null)) as Record<string, string> | null;
+  if (!certs || Object.keys(certs).length === 0) {
+    throw new Error("Firebase signing certificates are unavailable.");
+  }
+
   const ticket = await googleClient.verifySignedJwtWithCertsAsync(
     idToken,
-    certs.certs,
+    certs,
     projectId,
     ["https://securetoken.google.com/" + projectId],
     0,
