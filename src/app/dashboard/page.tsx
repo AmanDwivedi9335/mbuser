@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 import { FileIcon, UsersIcon } from "@/components/ui/icons";
 import { useCurrentProfile } from "@/features/dashboard/hooks/use-current-profile";
@@ -11,10 +12,11 @@ type FamilyMemberPillProps = {
   label: string;
   caption: string;
   active?: boolean;
+  href?: string;
 };
 
-function FamilyMemberPill({ label, caption, active = false }: FamilyMemberPillProps) {
-  return (
+function FamilyMemberPill({ label, caption, active = false, href }: FamilyMemberPillProps) {
+  const content = (
     <div className="flex min-w-16 flex-col items-center gap-2">
       <div
         className={
@@ -27,6 +29,16 @@ function FamilyMemberPill({ label, caption, active = false }: FamilyMemberPillPr
       </div>
       <p className="text-sm text-app-muted">{caption}</p>
     </div>
+  );
+
+  if (!href) {
+    return content;
+  }
+
+  return (
+    <Link href={href} className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-app-text">
+      {content}
+    </Link>
   );
 }
 
@@ -126,7 +138,7 @@ export default function DashboardPage() {
         </p>
         <div className="flex flex-wrap items-start gap-8">
           <FamilyMemberPill label={initialsFromName(currentMemberName)} caption="You" active />
-          <FamilyMemberPill label="+" caption="Add New" />
+          <FamilyMemberPill label="+" caption="Add New" href="/dashboard/add-new" />
         </div>
       </section>
 
