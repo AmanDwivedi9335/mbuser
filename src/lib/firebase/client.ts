@@ -12,13 +12,16 @@ const firebaseConfig: FirebaseOptions = {
 
 function assertConfig() {
   const required = [
-    "NEXT_PUBLIC_FIREBASE_API_KEY",
-    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
-    "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
-    "NEXT_PUBLIC_FIREBASE_APP_ID",
+    ["NEXT_PUBLIC_FIREBASE_API_KEY", firebaseConfig.apiKey],
+    ["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN", firebaseConfig.authDomain],
+    ["NEXT_PUBLIC_FIREBASE_PROJECT_ID", firebaseConfig.projectId],
+    ["NEXT_PUBLIC_FIREBASE_APP_ID", firebaseConfig.appId],
   ] as const;
 
-  const missing = required.filter((key) => !process.env[key]);
+  const missing = required
+    .filter(([, value]) => !value)
+    .map(([key]) => key);
+
   if (missing.length > 0) {
     throw new Error(`Missing Firebase client env vars: ${missing.join(", ")}`);
   }
