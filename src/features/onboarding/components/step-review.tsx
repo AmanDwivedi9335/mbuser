@@ -42,11 +42,11 @@ export function StepReview({ household, primaryProfile, familyMembers, isSaving,
       </div>
 
       <div className="flex justify-between">
-        <button type="button" onClick={onBack} className="rounded-lg border border-gray-300 px-4 py-2 font-semibold">Back</button>
+        <button type="button" onClick={onBack} className="btn-brand rounded-lg px-4 py-2 font-semibold">Back</button>
         <button
           type="button"
           disabled={isSaving}
-          className="rounded-lg bg-app-text px-4 py-2 font-semibold text-white disabled:opacity-60"
+          className="btn-brand rounded-lg px-4 py-2 font-semibold"
           onClick={() => void onConfirm()}
         >
           Confirm and continue

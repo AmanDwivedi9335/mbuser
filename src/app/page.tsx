@@ -7,11 +7,9 @@ export default function HomePage() {
           Production-grade family health vault setup is complete for Phase 1.
           Next we will implement secure authentication and onboarding flows.
         </p>
-        <div className="mt-8 inline-flex rounded-xl bg-gradient-to-b from-[#d81b60] via-[#7b1fa2] to-[#3b0aa3] p-[1px]">
-          <span className="rounded-[11px] bg-white px-5 py-2 text-sm font-semibold text-app-text">
-            SaaS Foundation Ready
-          </span>
-        </div>
+        <button type="button" className="btn-brand mt-8 rounded-xl px-5 py-2 text-sm font-semibold">
+          SaaS Foundation Ready
+        </button>
       </section>
     </main>
   );

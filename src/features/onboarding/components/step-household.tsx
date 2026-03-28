@@ -50,7 +50,7 @@ export function StepHousehold({ defaultValues, isSaving, onNext }: StepHousehold
         <button
           type="submit"
           disabled={isSaving}
-          className="rounded-lg bg-app-text px-4 py-2 font-semibold text-white disabled:opacity-60"
+          className="btn-brand rounded-lg px-4 py-2 font-semibold"
         >
           Continue
         </button>

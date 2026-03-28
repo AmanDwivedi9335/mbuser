@@ -71,8 +71,8 @@ export function StepPrimaryProfile({ defaultValues, isSaving, onBack, onNext }: 
       </div>
 
       <div className="flex justify-between">
-        <button type="button" onClick={onBack} className="rounded-lg border border-gray-300 px-4 py-2 font-semibold">Back</button>
-        <button type="submit" disabled={isSaving} className="rounded-lg bg-app-text px-4 py-2 font-semibold text-white disabled:opacity-60">Continue</button>
+        <button type="button" onClick={onBack} className="btn-brand rounded-lg px-4 py-2 font-semibold">Back</button>
+        <button type="submit" disabled={isSaving} className="btn-brand rounded-lg px-4 py-2 font-semibold">Continue</button>
       </div>
     </form>
   );
