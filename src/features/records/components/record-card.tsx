@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import type { VaultRecord } from "@/features/records/types/record.types";
 
+const recordDateFormatter = new Intl.DateTimeFormat(undefined, {
+  timeZone: "UTC",
+});
+
 export function RecordCard({ record }: { record: VaultRecord }) {
   return (
     <article className="rounded-xl border border-app-border bg-app-panel p-4 shadow-sm">
@@ -22,7 +26,7 @@ export function RecordCard({ record }: { record: VaultRecord }) {
         </div>
         <div>
           <dt className="inline font-medium text-app-text">Record date: </dt>
-          <dd className="inline">{record.recordDate ? new Date(record.recordDate).toLocaleDateString() : "N/A"}</dd>
+          <dd className="inline">{record.recordDate ? recordDateFormatter.format(new Date(record.recordDate)) : "N/A"}</dd>
         </div>
       </dl>
     </article>
