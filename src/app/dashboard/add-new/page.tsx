@@ -67,14 +67,14 @@ export default function AddNewPage() {
         </header>
 
         <div className="grid items-stretch gap-6 xl:grid-cols-2">
-          <article className="flex h-full min-h-[370px] flex-col rounded-4xl border border-app-muted/10 bg-app-surface px-6 py-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:px-8">
+          <article className="flex h-full max-h-[270px] flex-col rounded-4xl border border-app-muted/10 bg-app-surface px-6 py-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:px-8">
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="flex min-w-0 items-center gap-5">
                 <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-app-text text-5xl font-semibold text-white shadow-[0_8px_18px_rgba(42,21,59,0.25)]">
                   A
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-3xl font-semibold leading-tight tracking-tight">Alex Johnson</p>
+                  <p className="truncate text-xl font-semibold leading-tight tracking-tight">Alex Johnson</p>
                   <p className="mt-2 text-base text-app-muted">Self • 34 years old</p>
                 </div>
               </div>
