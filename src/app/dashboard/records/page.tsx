@@ -295,7 +295,7 @@ export default function RecordsPage() {
               />
             </label>
             <div className="inline-flex min-h-11 items-center rounded-full border border-app-muted/15 bg-app-surface/55 px-4 text-sm font-semibold">
-              {selectedProfile?.label ?? "No profile selected"}
+              {selectedProfile?.fullName ?? "No profile selected"}
             </div>
           </div>
 
