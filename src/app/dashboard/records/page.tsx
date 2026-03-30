@@ -234,14 +234,14 @@ export default function RecordsPage() {
         <p className="text-sm text-app-muted">Secure Medibank Storage</p>
       </header>
 
-      <div className="relative z-20 inline-flex w-fit items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm shadow-sm">
+      <div className="relative z-20 inline-flex w-full max-w-full items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm shadow-sm sm:w-fit">
         <button
           type="button"
           onClick={() => setViewMode("categories")}
           aria-pressed={viewMode === "categories"}
           aria-controls="records-view-panel"
           className={[
-            "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40",
+            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
             viewMode === "categories" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >
@@ -254,7 +254,7 @@ export default function RecordsPage() {
           aria-pressed={viewMode === "timeline"}
           aria-controls="records-view-panel"
           className={[
-            "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40",
+            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
             viewMode === "timeline" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >

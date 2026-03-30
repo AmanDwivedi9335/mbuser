@@ -36,7 +36,7 @@ export function Topbar({ onOpenMobileSidebar }: TopbarProps) {
   };
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-app-muted/20 bg-app-bg px-4 md:px-6">
+    <header className="sticky top-0 z-30 flex min-h-16 flex-wrap items-center justify-between gap-3 border-b border-app-muted/20 bg-app-bg px-3 py-2 sm:px-4 md:px-6">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -46,13 +46,13 @@ export function Topbar({ onOpenMobileSidebar }: TopbarProps) {
         >
           <MenuIcon className="h-5 w-5" aria-hidden="true" />
         </button>
-        <div>
+        <div className="min-w-0">
           <p className="text-base font-semibold">Medibank</p>
-          <p className="text-xs text-app-muted">Your family health command center</p>
+          <p className="hidden text-xs text-app-muted sm:block">Your family health command center</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex w-full items-center justify-end gap-2 sm:w-auto sm:gap-3">
         <ProfileSwitcher />
         <button
           type="button"
@@ -69,10 +69,10 @@ export function Topbar({ onOpenMobileSidebar }: TopbarProps) {
           onClick={() => {
             void handleLogout();
           }}
-          className="inline-flex items-center gap-2 rounded-md border border-app-muted/30 px-3 py-2 text-sm hover:bg-app-surface"
+          className="inline-flex items-center gap-2 rounded-md border border-app-muted/30 px-2.5 py-2 text-sm hover:bg-app-surface sm:px-3"
         >
           <LogoutIcon className="h-4 w-4" aria-hidden="true" />
-          Logout
+          <span className="hidden sm:inline">Logout</span>
         </button>
       </div>
     </header>
