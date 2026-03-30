@@ -6,7 +6,7 @@ const relationshipOptions = ["Spouse", "Mother", "Father", "Sibling", "Child", "
 
 function CloseIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -15,7 +15,7 @@ function CloseIcon() {
 
 function CameraIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
       <path d="M5 7h2.2a2 2 0 0 0 1.7-.9l.8-1.2A2 2 0 0 1 11.4 4h1.2a2 2 0 0 1 1.7.9l.8 1.2a2 2 0 0 0 1.7.9H19a2 2 0 0 1 2 2v8.5a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5V9a2 2 0 0 1 2-2Z" />
       <circle cx="12" cy="13" r="3.2" />
     </svg>
@@ -65,48 +65,48 @@ export function AddFamilyMemberModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="add-family-member-title"
-            className="max-h-[92vh] w-full max-w-[760px] overflow-auto rounded-[28px] bg-white text-app-text shadow-[0_22px_42px_rgba(17,35,63,0.28)] sm:rounded-[40px]"
+            className="max-h-[92vh] w-full max-w-[560px] overflow-auto rounded-2xl bg-white text-app-text shadow-[0_22px_42px_rgba(17,35,63,0.28)] sm:rounded-3xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between bg-[#eef1f6] px-4 py-4 sm:px-8 sm:py-6">
-              <h2 id="add-family-member-title" className="text-xl font-bold text-app-text sm:text-2xl">
+            <div className="flex items-center justify-between bg-[#eef1f6] px-4 py-3 sm:px-6 sm:py-4">
+              <h2 id="add-family-member-title" className="text-lg font-semibold text-app-text sm:text-xl">
                 Add Family Member
               </h2>
-              <button type="button" aria-label="Close add family member dialog" className="rounded-full p-2 text-[#6d7f99] transition-colors hover:bg-[#dfe5ee]" onClick={() => setIsOpen(false)}>
+              <button type="button" aria-label="Close add family member dialog" className="rounded-full p-1.5 text-[#6d7f99] transition-colors hover:bg-[#dfe5ee]" onClick={() => setIsOpen(false)}>
                 <CloseIcon />
               </button>
             </div>
 
-            <form className="space-y-4 px-4 py-5 sm:space-y-5 sm:px-8 sm:py-7" onSubmit={(event) => event.preventDefault()}>
+            <form className="space-y-3 px-4 py-4 sm:space-y-4 sm:px-6 sm:py-5" onSubmit={(event) => event.preventDefault()}>
               <div className="flex justify-center">
                 <button
                   type="button"
-                  className="relative flex h-[7.5rem] w-[7.5rem] items-center justify-center rounded-full border border-[#d9e1ec] bg-[#edf2f7] text-[#8ca0ba]"
+                  className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#d9e1ec] bg-[#edf2f7] text-[#8ca0ba]"
                   aria-label="Add family member photo"
                 >
                   <CameraIcon />
-                  <span className="absolute bottom-1 right-0 flex h-8 w-8 items-center justify-center rounded-full bg-[#3d80f4] text-2xl font-semibold text-white">+</span>
+                  <span className="absolute -bottom-0.5 -right-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#3d80f4] text-base font-semibold text-white">+</span>
                 </button>
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Full Name</span>
+                <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-app-muted">Full Name</span>
                 <input
                   type="text"
                   value={form.fullName}
                   onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
                   placeholder="e.g. Jane Doe"
-                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
+                  className="h-11 w-full rounded-full border border-[#ccd8e7] px-4 text-sm text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                 />
               </label>
 
               <div className="grid gap-4 sm:grid-cols-[1fr_0.85fr]">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Relation</span>
+                  <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-app-muted">Relation</span>
                   <select
                     value={form.relationship}
                     onChange={(event) => setForm((prev) => ({ ...prev, relationship: event.target.value }))}
-                    className="h-16 w-full rounded-full border border-[#ccd8e7] bg-white px-6 text-xl text-app-text outline-none transition-colors focus:border-[#8eaae0]"
+                    className="h-11 w-full rounded-full border border-[#ccd8e7] bg-white px-4 text-sm text-app-text outline-none transition-colors focus:border-[#8eaae0]"
                   >
                     <option value="">Select...</option>
                     {relationshipOptions.map((option) => (
@@ -118,7 +118,7 @@ export function AddFamilyMemberModal() {
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Age</span>
+                  <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-app-muted">Age</span>
                   <input
                     type="number"
                     min={0}
@@ -126,13 +126,13 @@ export function AddFamilyMemberModal() {
                     value={form.age}
                     onChange={(event) => setForm((prev) => ({ ...prev, age: event.target.value }))}
                     placeholder="Age"
-                    className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
+                    className="h-11 w-full rounded-full border border-[#ccd8e7] px-4 text-sm text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                   />
                 </label>
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-sm font-semibold tracking-wide text-app-muted">
+                <span className="mb-1.5 block text-xs font-semibold tracking-wide text-app-muted">
                   EMAIL <span className="font-normal lowercase">(optional)</span>
                 </span>
                 <input
@@ -140,11 +140,11 @@ export function AddFamilyMemberModal() {
                   value={form.email}
                   onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
                   placeholder="user@example.com"
-                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
+                  className="h-11 w-full rounded-full border border-[#ccd8e7] px-4 text-sm text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                 />
               </label>
 
-              <button type="submit" className="h-16 w-full rounded-full bg-[#2f67e6] text-2xl font-semibold text-white shadow-[0_8px_16px_rgba(47,103,230,0.34)] transition-colors hover:bg-[#2358cf]">
+              <button type="submit" className="h-11 w-full rounded-full bg-[#2f67e6] text-sm font-semibold text-white shadow-[0_8px_16px_rgba(47,103,230,0.34)] transition-colors hover:bg-[#2358cf]">
                 Add Member
               </button>
             </form>
