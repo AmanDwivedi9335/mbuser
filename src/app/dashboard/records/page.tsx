@@ -136,7 +136,7 @@ export default function RecordsPage() {
     <section className="space-y-5">
       <header className="space-y-1">
         <h1 className="text-3xl font-bold tracking-tight text-app-text">Categories</h1>
-        <p className="text-sm text-app-muted">Secure MediVault Storage</p>
+        <p className="text-sm text-app-muted">Secure Medibank Storage</p>
       </header>
 
       <div className="inline-flex items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm">

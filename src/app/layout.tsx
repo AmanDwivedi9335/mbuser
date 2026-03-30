@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Medivault",
+  title: "Medibank",
   description: "Secure multi-profile family health vault and assistant",
 };
 

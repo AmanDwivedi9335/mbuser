@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { fetchProfiles, updateSelectedProfile } from "@/features/dashboard/services/dashboard.client";
 import type { DashboardProfile } from "@/features/dashboard/types/dashboard.types";
 
-const STORAGE_KEY = "medivault:selected-profile-id";
+const STORAGE_KEY = "Medibank:selected-profile-id";
 
 type CurrentProfileContextValue = {
   profiles: DashboardProfile[];

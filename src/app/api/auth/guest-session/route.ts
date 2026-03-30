@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { createSession } from "@/lib/auth/session";
 import { prisma } from "@/lib/db/prisma";
 
-const GUEST_EMAIL = "guest@medivault.local";
+const GUEST_EMAIL = "guest@Medibank.local";
 const GUEST_FIREBASE_UID = "guest-local-account";
 const GUEST_DISPLAY_NAME = "Guest User";
 const GUEST_HOUSEHOLD_NAME = "Guest Household";
