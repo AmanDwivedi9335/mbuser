@@ -225,20 +225,23 @@ export default function RecordsPage() {
       });
   }, [records, doctorFilter, dateRange, searchQuery]);
 
+  const isCategoriesView = viewMode === "categories";
+
   return (
     <section className="space-y-5">
       <header className="space-y-1">
-        <h1 className="text-3xl font-bold tracking-tight text-app-text">Categories</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-app-text">{isCategoriesView ? "Categories" : "Timeline"}</h1>
         <p className="text-sm text-app-muted">Secure Medibank Storage</p>
       </header>
 
-      <div className="relative z-10 inline-flex items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm">
+      <div className="relative z-20 inline-flex w-fit items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm shadow-sm">
         <button
           type="button"
           onClick={() => setViewMode("categories")}
           aria-pressed={viewMode === "categories"}
+          aria-controls="records-view-panel"
           className={[
-            "inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold",
+            "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40",
             viewMode === "categories" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >
@@ -249,8 +252,9 @@ export default function RecordsPage() {
           type="button"
           onClick={() => setViewMode("timeline")}
           aria-pressed={viewMode === "timeline"}
+          aria-controls="records-view-panel"
           className={[
-            "inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold",
+            "relative z-10 inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40",
             viewMode === "timeline" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >
@@ -263,7 +267,7 @@ export default function RecordsPage() {
       {isLoading ? <p className="text-sm text-app-muted">Loading categories...</p> : null}
 
       {viewMode === "categories" ? (
-        <div className="grid gap-2 md:grid-cols-2">
+        <div id="records-view-panel" className="grid gap-2 md:grid-cols-2">
           {categoryCards.map((card) => (
             <CategoryCard
               key={card.label}
@@ -277,7 +281,7 @@ export default function RecordsPage() {
           ))}
         </div>
       ) : (
-        <div className="space-y-3 rounded-3xl border border-app-muted/15 bg-white/40 p-4 sm:p-6">
+        <div id="records-view-panel" className="space-y-3 rounded-3xl border border-app-muted/15 bg-white/40 p-4 sm:p-6">
           <div className="flex flex-col gap-3 md:flex-row">
             <label className="flex min-h-11 flex-1 items-center gap-2 rounded-full border border-app-muted/15 bg-app-surface/55 px-4">
               <span className="text-app-muted" aria-hidden="true">
