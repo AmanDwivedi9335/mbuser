@@ -53,7 +53,7 @@ export function AddFamilyMemberModal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group flex min-h-[300px] flex-col items-center justify-center gap-4 rounded-3xl border-2 border-dashed border-app-border bg-app-surface text-app-muted transition-colors hover:border-app-accent/60 hover:text-app-accent"
+        className="group flex h-full min-h-[370px] w-full flex-col items-center justify-center gap-4 rounded-3xl border-2 border-dashed border-app-border bg-app-surface px-6 text-app-muted transition-colors hover:border-app-accent/60 hover:text-app-accent"
       >
         <span className="flex h-22 w-22 items-center justify-center rounded-full bg-white text-7xl leading-none shadow-[0_8px_16px_rgba(79,101,131,0.12)]">+</span>
         <span className="text-2xl font-semibold">Link Family Member</span>

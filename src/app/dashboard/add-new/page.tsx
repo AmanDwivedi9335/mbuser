@@ -40,7 +40,7 @@ function FolderIcon() {
 
 function DocumentIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4.5 w-4.5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px]">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <path d="M14 2v6h6" />
     </svg>
@@ -49,9 +49,9 @@ function DocumentIcon() {
 
 export default function AddNewPage() {
   return (
-    <section className="min-h-[calc(100vh-7.5rem)] space-y-5 text-app-text">
-      <div className="mx-auto w-full max-w-[1040px] space-y-8">
-        <header className="flex items-start gap-4">
+    <section className="min-h-[calc(100vh-7.5rem)] px-1 pb-6 text-app-text">
+      <div className="mx-auto w-full max-w-[1220px] space-y-8">
+        <header className="flex items-start gap-4 lg:items-center">
           <Link
             href="/dashboard"
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-app-border bg-app-panel text-app-muted transition-colors hover:bg-app-surface"
@@ -66,20 +66,20 @@ export default function AddNewPage() {
           </div>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <article className="rounded-3xl border border-app-border bg-app-panel px-7 py-6 shadow-[0_10px_20px_rgba(58,82,110,0.12)]">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-5">
-                <div className="flex h-30 w-30 items-center justify-center rounded-full bg-[#397cf2] text-6xl font-semibold text-white shadow-[0_8px_14px_rgba(57,124,242,0.28)]">
+        <div className="grid items-stretch gap-6 xl:grid-cols-2">
+          <article className="flex h-full min-h-[370px] flex-col rounded-3xl border border-app-border bg-app-panel px-6 py-6 shadow-[0_10px_20px_rgba(58,82,110,0.12)] sm:px-8">
+            <div className="flex flex-wrap items-start justify-between gap-6">
+              <div className="flex min-w-0 items-center gap-5">
+                <div className="flex h-26 w-26 shrink-0 items-center justify-center rounded-full bg-[#397cf2] text-6xl font-semibold text-white shadow-[0_8px_14px_rgba(57,124,242,0.28)]">
                   A
                 </div>
-                <div>
-                  <p className="text-2xl font-semibold leading-tight">Alex Johnson</p>
+                <div className="min-w-0">
+                  <p className="truncate text-[2rem] font-semibold leading-tight">Alex Johnson</p>
                   <p className="mt-2 text-app-muted">Self • 34 years old</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 rounded-full border border-app-border bg-app-surface px-4 py-2 text-app-muted">
+              <div className="ml-auto flex items-center gap-4 rounded-full border border-app-border bg-app-surface px-4 py-2 text-app-muted">
                 <button type="button" className="rounded-full p-2 hover:bg-app-panel" aria-label="Share profile">
                   <ShareIcon />
                 </button>
@@ -89,7 +89,7 @@ export default function AddNewPage() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-10">
               <p className="inline-flex items-center gap-3 rounded-2xl bg-app-surface px-4 py-3 text-base text-app-muted">
                 <FolderIcon />
                 <span className="font-semibold text-app-text">0</span>
