@@ -50,7 +50,7 @@ function DocumentIcon() {
 export default function AddNewPage() {
   return (
     <section className="min-h-[calc(100vh-7.5rem)] px-1 pb-6 text-app-text">
-      <div className="mx-auto w-full max-w-[1220px] space-y-8">
+      <div className="mx-auto w-full max-w-[1220px] space-y-7">
         <header className="flex items-start gap-4 lg:items-center">
           <Link
             href="/dashboard"
@@ -61,41 +61,44 @@ export default function AddNewPage() {
           </Link>
 
           <div>
-            <h1 className="text-2xl font-bold leading-tight">Family Health Hub</h1>
-            <p className="text-app-muted">Manage health records for your loved ones</p>
+            <h1 className="text-2xl font-bold tracking-tight">Family Health Hub</h1>
+            <p className="mt-1 text-app-muted">Manage health records for your loved ones</p>
           </div>
         </header>
 
         <div className="grid items-stretch gap-6 xl:grid-cols-2">
-          <article className="flex h-full min-h-[370px] flex-col rounded-3xl border border-app-border bg-app-panel px-6 py-6 shadow-[0_10px_20px_rgba(58,82,110,0.12)] sm:px-8">
+          <article className="flex h-full min-h-[370px] flex-col rounded-4xl border border-app-muted/10 bg-app-surface px-6 py-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:px-8">
             <div className="flex flex-wrap items-start justify-between gap-6">
               <div className="flex min-w-0 items-center gap-5">
-                <div className="flex h-26 w-26 shrink-0 items-center justify-center rounded-full bg-[#397cf2] text-6xl font-semibold text-white shadow-[0_8px_14px_rgba(57,124,242,0.28)]">
+                <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-app-text text-5xl font-semibold text-white shadow-[0_8px_18px_rgba(42,21,59,0.25)]">
                   A
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-[2rem] font-semibold leading-tight">Alex Johnson</p>
-                  <p className="mt-2 text-app-muted">Self • 34 years old</p>
+                  <p className="truncate text-3xl font-semibold leading-tight tracking-tight">Alex Johnson</p>
+                  <p className="mt-2 text-base text-app-muted">Self • 34 years old</p>
                 </div>
               </div>
 
-              <div className="ml-auto flex items-center gap-4 rounded-full border border-app-border bg-app-surface px-4 py-2 text-app-muted">
-                <button type="button" className="rounded-full p-2 hover:bg-app-panel" aria-label="Share profile">
+              <div className="ml-auto flex items-center gap-4 rounded-full border border-app-muted/20 bg-app-bg px-4 py-2 text-app-muted">
+                <button type="button" className="rounded-full p-2 transition-colors hover:bg-app-surface hover:text-app-text" aria-label="Share profile">
                   <ShareIcon />
                 </button>
-                <button type="button" className="rounded-full p-2 hover:bg-app-panel" aria-label="Edit profile">
+                <button type="button" className="rounded-full p-2 transition-colors hover:bg-app-surface hover:text-app-text" aria-label="Edit profile">
                   <EditIcon />
                 </button>
               </div>
             </div>
 
             <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-10">
-              <p className="inline-flex items-center gap-3 rounded-2xl bg-app-surface px-4 py-3 text-base text-app-muted">
+              <p className="inline-flex items-center gap-3 rounded-2xl border border-app-muted/20 bg-app-bg px-4 py-3 text-base text-app-muted">
                 <FolderIcon />
                 <span className="font-semibold text-app-text">0</span>
                 documents
               </p>
-              <Link href="/dashboard/records" className="inline-flex items-center gap-2 text-base font-semibold text-app-accent hover:underline">
+              <Link
+                href="/dashboard/records"
+                className="inline-flex items-center gap-2 rounded-full border border-app-muted/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-app-text transition-colors hover:bg-app-bg"
+              >
                 <DocumentIcon />
                 View Documents
               </Link>
