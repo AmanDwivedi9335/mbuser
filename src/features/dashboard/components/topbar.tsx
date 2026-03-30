@@ -46,10 +46,10 @@ export function Topbar({ onOpenMobileSidebar }: TopbarProps) {
         >
           <MenuIcon className="h-5 w-5" aria-hidden="true" />
         </button>
-        <div className="min-w-0">
+        {/* <div className="min-w-0">
           <p className="text-base font-semibold">Medibank</p>
           <p className="hidden text-xs text-app-muted sm:block">Your family health command center</p>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex w-full items-center justify-end gap-2 sm:w-auto sm:gap-3">
