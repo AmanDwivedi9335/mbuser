@@ -53,23 +53,23 @@ export function AddFamilyMemberModal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group flex h-full min-h-[370px] w-full flex-col items-center justify-center gap-4 rounded-3xl border-2 border-dashed border-app-border bg-app-surface px-6 text-app-muted transition-colors hover:border-app-accent/60 hover:text-app-accent"
+        className="group flex h-full min-h-[370px] w-full flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-app-border bg-app-surface px-4 text-app-muted transition-colors hover:border-app-accent/60 hover:text-app-accent sm:gap-4 sm:px-6"
       >
-        <span className="flex h-22 w-22 items-center justify-center rounded-full bg-white text-7xl leading-none shadow-[0_8px_16px_rgba(79,101,131,0.12)]">+</span>
-        <span className="text-2xl font-semibold">Link Family Member</span>
+        <span className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white text-6xl leading-none shadow-[0_8px_16px_rgba(79,101,131,0.12)] sm:h-[5.5rem] sm:w-[5.5rem] sm:text-7xl">+</span>
+        <span className="text-center text-xl font-semibold sm:text-2xl">Link Family Member</span>
       </button>
 
       {isOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0b1a2d]/40 p-6 backdrop-blur-[3px]" role="presentation" onClick={() => setIsOpen(false)}>
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#0b1a2d]/40 p-3 backdrop-blur-[3px] sm:items-center sm:p-6" role="presentation" onClick={() => setIsOpen(false)}>
           <div
             role="dialog"
             aria-modal="true"
             aria-labelledby="add-family-member-title"
-            className="w-full max-w-[760px] overflow-hidden rounded-[40px] bg-white text-app-text shadow-[0_22px_42px_rgba(17,35,63,0.28)]"
+            className="max-h-[92vh] w-full max-w-[760px] overflow-auto rounded-[28px] bg-white text-app-text shadow-[0_22px_42px_rgba(17,35,63,0.28)] sm:rounded-[40px]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between bg-[#eef1f6] px-8 py-6">
-              <h2 id="add-family-member-title" className="text-2xl font-bold text-app-text">
+            <div className="flex items-center justify-between bg-[#eef1f6] px-4 py-4 sm:px-8 sm:py-6">
+              <h2 id="add-family-member-title" className="text-xl font-bold text-app-text sm:text-2xl">
                 Add Family Member
               </h2>
               <button type="button" aria-label="Close add family member dialog" className="rounded-full p-2 text-[#6d7f99] transition-colors hover:bg-[#dfe5ee]" onClick={() => setIsOpen(false)}>
@@ -77,11 +77,11 @@ export function AddFamilyMemberModal() {
               </button>
             </div>
 
-            <form className="space-y-5 px-8 py-7" onSubmit={(event) => event.preventDefault()}>
+            <form className="space-y-4 px-4 py-5 sm:space-y-5 sm:px-8 sm:py-7" onSubmit={(event) => event.preventDefault()}>
               <div className="flex justify-center">
                 <button
                   type="button"
-                  className="relative flex h-30 w-30 items-center justify-center rounded-full border border-[#d9e1ec] bg-[#edf2f7] text-[#8ca0ba]"
+                  className="relative flex h-[7.5rem] w-[7.5rem] items-center justify-center rounded-full border border-[#d9e1ec] bg-[#edf2f7] text-[#8ca0ba]"
                   aria-label="Add family member photo"
                 >
                   <CameraIcon />

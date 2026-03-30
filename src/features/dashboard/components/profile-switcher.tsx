@@ -6,15 +6,15 @@ export function ProfileSwitcher() {
   const { profiles, selectedProfileId, isLoading, switchProfile } = useCurrentProfile();
 
   return (
-    <label className="flex items-center gap-2 text-sm">
-      <span className="text-app-muted">Profile</span>
+    <label className="flex min-w-0 items-center gap-2 text-sm">
+      <span className="hidden text-app-muted sm:inline">Profile</span>
       <select
         value={selectedProfileId ?? ""}
         onChange={(event) => {
           void switchProfile(event.target.value);
         }}
         disabled={isLoading || profiles.length === 0}
-        className="rounded-md border border-app-muted/30 bg-app-bg px-2 py-1 text-app-text"
+        className="max-w-36 rounded-md border border-app-muted/30 bg-app-bg px-2 py-1 text-app-text sm:max-w-48"
       >
         {profiles.length === 0 ? <option value="">No profiles</option> : null}
         {profiles.map((profile) => (
