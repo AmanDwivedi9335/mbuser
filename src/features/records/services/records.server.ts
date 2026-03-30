@@ -38,6 +38,10 @@ async function getAuthorizedProfile(userId: string, profileId: string) {
 type RecordWithFiles = PrismaRecord & { files: PrismaRecordFile[] };
 
 function mapRecord(record: RecordWithFiles): VaultRecord {
+  const tags = Array.isArray(record.tags)
+    ? record.tags.filter((tag): tag is string => typeof tag === "string")
+    : [];
+
   return {
     id: record.id,
     profileId: record.profileId,
@@ -46,7 +50,7 @@ function mapRecord(record: RecordWithFiles): VaultRecord {
     providerName: record.providerName,
     recordDate: record.recordDate ? record.recordDate.toISOString() : null,
     notes: record.notes,
-    tags: Array.isArray(record.tags) ? record.tags : [],
+    tags,
     createdAt: record.createdAt.toISOString(),
     updatedAt: record.updatedAt.toISOString(),
     files: record.files.map((file) => ({
