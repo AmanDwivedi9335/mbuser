@@ -232,12 +232,13 @@ export default function RecordsPage() {
         <p className="text-sm text-app-muted">Secure Medibank Storage</p>
       </header>
 
-      <div className="inline-flex items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm">
+      <div className="relative z-10 inline-flex items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm">
         <button
           type="button"
           onClick={() => setViewMode("categories")}
+          aria-pressed={viewMode === "categories"}
           className={[
-            "inline-flex items-center gap-2 rounded-full px-8 py-2 font-semibold",
+            "inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold",
             viewMode === "categories" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >
@@ -247,8 +248,9 @@ export default function RecordsPage() {
         <button
           type="button"
           onClick={() => setViewMode("timeline")}
+          aria-pressed={viewMode === "timeline"}
           className={[
-            "inline-flex items-center gap-2 rounded-full px-8 py-2 font-semibold",
+            "inline-flex cursor-pointer items-center gap-2 rounded-full px-8 py-2 font-semibold",
             viewMode === "timeline" ? "bg-app-surface text-app-text" : "text-app-muted",
           ].join(" ")}
         >
