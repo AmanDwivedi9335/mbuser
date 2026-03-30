@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { requireSessionUser } from "@/lib/auth/require-user";
 import { prisma } from "@/lib/db/prisma";
 
-const SELECTED_PROFILE_COOKIE = "medivault_selected_profile";
+const SELECTED_PROFILE_COOKIE = "Medibank_selected_profile";
 const PROFILE_COOKIE_AGE = 60 * 60 * 24 * 30;
 
 type UpdateSelectedProfileBody = {

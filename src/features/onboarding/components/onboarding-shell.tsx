@@ -51,7 +51,7 @@ export function OnboardingShell() {
 
   return (
     <section className="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl shadow-fuchsia-200/30 sm:p-8">
-      <h1 className="text-2xl font-bold text-app-text">Welcome to Medivault</h1>
+      <h1 className="text-2xl font-bold text-app-text">Welcome to Medibank</h1>
       <p className="mt-1 text-sm text-app-muted">Set up your household and profiles to get started.</p>
 
       <ProgressHeader step={currentStep} progress={progress} />

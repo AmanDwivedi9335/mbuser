@@ -1,4 +1,4 @@
-# Medivault
+# Medibank
 
 Production-grade SaaS foundation for a secure, multi-profile family health vault built with Next.js App Router.
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const PUBLIC_API_ROUTES = new Set(["/api/auth/session", "/api/auth/guest-session", "/api/auth/logout"]);
-const SESSION_COOKIE_NAME = "medivault_session";
+const SESSION_COOKIE_NAME = "Medibank_session";
 
 export async function requireSessionMiddleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;

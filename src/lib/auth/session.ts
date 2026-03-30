@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 import { cookies } from "next/headers";
 
-const SESSION_COOKIE_NAME = "medivault_session";
+const SESSION_COOKIE_NAME = "Medibank_session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const DEV_SESSION_SECRET = "dev-only-session-secret-change-me-before-production";
 
