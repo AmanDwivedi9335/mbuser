@@ -53,10 +53,10 @@ export function AddFamilyMemberModal() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group flex min-h-[300px] flex-col items-center justify-center gap-4 rounded-[34px] border-2 border-dashed border-[#d6deeb] bg-[#f4f7fb] text-[#8ba0bf] transition-colors hover:border-[#98b4e5] hover:text-[#5f7fb1]"
+        className="group flex min-h-[300px] flex-col items-center justify-center gap-4 rounded-3xl border-2 border-dashed border-app-border bg-app-surface text-app-muted transition-colors hover:border-app-accent/60 hover:text-app-accent"
       >
         <span className="flex h-22 w-22 items-center justify-center rounded-full bg-white text-7xl leading-none shadow-[0_8px_16px_rgba(79,101,131,0.12)]">+</span>
-        <span className="text-[42px] font-medium">Link Family Member</span>
+        <span className="text-2xl font-semibold">Link Family Member</span>
       </button>
 
       {isOpen ? (
@@ -65,11 +65,11 @@ export function AddFamilyMemberModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="add-family-member-title"
-            className="w-full max-w-[760px] overflow-hidden rounded-[40px] bg-white shadow-[0_22px_42px_rgba(17,35,63,0.28)]"
+            className="w-full max-w-[760px] overflow-hidden rounded-[40px] bg-white text-app-text shadow-[0_22px_42px_rgba(17,35,63,0.28)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between bg-[#eef1f6] px-8 py-6">
-              <h2 id="add-family-member-title" className="text-[44px] font-semibold text-[#0d284f]">
+              <h2 id="add-family-member-title" className="text-2xl font-bold text-app-text">
                 Add Family Member
               </h2>
               <button type="button" aria-label="Close add family member dialog" className="rounded-full p-2 text-[#6d7f99] transition-colors hover:bg-[#dfe5ee]" onClick={() => setIsOpen(false)}>
@@ -90,23 +90,23 @@ export function AddFamilyMemberModal() {
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-xl font-semibold uppercase tracking-wide text-[#5e7391]">Full Name</span>
+                <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Full Name</span>
                 <input
                   type="text"
                   value={form.fullName}
                   onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
                   placeholder="e.g. Jane Doe"
-                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-[36px] text-[#223f67] outline-none transition-colors placeholder:text-[#8aa0be] focus:border-[#8eaae0]"
+                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                 />
               </label>
 
               <div className="grid gap-4 sm:grid-cols-[1fr_0.85fr]">
                 <label className="block">
-                  <span className="mb-2 block text-xl font-semibold uppercase tracking-wide text-[#5e7391]">Relation</span>
+                  <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Relation</span>
                   <select
                     value={form.relationship}
                     onChange={(event) => setForm((prev) => ({ ...prev, relationship: event.target.value }))}
-                    className="h-16 w-full rounded-full border border-[#ccd8e7] bg-white px-6 text-[36px] text-[#223f67] outline-none transition-colors focus:border-[#8eaae0]"
+                    className="h-16 w-full rounded-full border border-[#ccd8e7] bg-white px-6 text-xl text-app-text outline-none transition-colors focus:border-[#8eaae0]"
                   >
                     <option value="">Select...</option>
                     {relationshipOptions.map((option) => (
@@ -118,7 +118,7 @@ export function AddFamilyMemberModal() {
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-xl font-semibold uppercase tracking-wide text-[#5e7391]">Age</span>
+                  <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-app-muted">Age</span>
                   <input
                     type="number"
                     min={0}
@@ -126,13 +126,13 @@ export function AddFamilyMemberModal() {
                     value={form.age}
                     onChange={(event) => setForm((prev) => ({ ...prev, age: event.target.value }))}
                     placeholder="Age"
-                    className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-[36px] text-[#223f67] outline-none transition-colors placeholder:text-[#8aa0be] focus:border-[#8eaae0]"
+                    className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                   />
                 </label>
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-xl font-semibold tracking-wide text-[#5e7391]">
+                <span className="mb-2 block text-sm font-semibold tracking-wide text-app-muted">
                   EMAIL <span className="font-normal lowercase">(optional)</span>
                 </span>
                 <input
@@ -140,11 +140,11 @@ export function AddFamilyMemberModal() {
                   value={form.email}
                   onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
                   placeholder="user@example.com"
-                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-[36px] text-[#223f67] outline-none transition-colors placeholder:text-[#8aa0be] focus:border-[#8eaae0]"
+                  className="h-16 w-full rounded-full border border-[#ccd8e7] px-6 text-xl text-app-text outline-none transition-colors placeholder:text-app-muted focus:border-[#8eaae0]"
                 />
               </label>
 
-              <button type="submit" className="h-16 w-full rounded-full bg-[#2f67e6] text-[42px] font-semibold text-white shadow-[0_8px_16px_rgba(47,103,230,0.34)] transition-colors hover:bg-[#2358cf]">
+              <button type="submit" className="h-16 w-full rounded-full bg-[#2f67e6] text-2xl font-semibold text-white shadow-[0_8px_16px_rgba(47,103,230,0.34)] transition-colors hover:bg-[#2358cf]">
                 Add Member
               </button>
             </form>

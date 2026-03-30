@@ -112,8 +112,8 @@ export default function DashboardPage() {
     <section className="space-y-7">
       <header className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">Health Overview</h1>
-          <p className="mt-1 text-3xl text-app-muted">
+          <h1 className="text-2xl font-bold tracking-tight">Health Overview</h1>
+          <p className="mt-1 text-app-muted">
             Welcome back, <span className="font-semibold text-app-text">{headerName} (You)</span>
           </p>
         </div>
@@ -145,8 +145,8 @@ export default function DashboardPage() {
       <section className="grid gap-6 md:grid-cols-2">
         <article className="flex items-center justify-between rounded-4xl border border-app-muted/10 bg-app-surface p-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] md:max-w-md">
           <div>
-            <h2 className="text-3xl font-semibold uppercase text-app-muted">Total Documents</h2>
-            <p className="mt-2 text-6xl font-bold">{isLoadingRecords ? "..." : recordCount}</p>
+            <h2 className="text-lg font-semibold uppercase text-app-muted">Total Documents</h2>
+            <p className="mt-2 text-4xl font-bold">{isLoadingRecords ? "..." : recordCount}</p>
             <p className="mt-1 text-base text-app-muted">Across all family members</p>
           </div>
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-app-text text-white">
@@ -156,13 +156,13 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="inline-flex items-center gap-2 text-4xl font-semibold tracking-tight">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-semibold tracking-tight">
           <span className="text-app-muted">◷</span>
           Recent Activity
         </h2>
         <div className="rounded-4xl border border-dashed border-app-muted/30 bg-app-surface px-6 py-16 text-center">
-          <p className="text-3xl text-app-muted">No recent documents found.</p>
-          <p className="mt-2 text-xl text-app-muted/80">Upload a record to see it here.</p>
+          <p className="text-xl text-app-muted">No recent documents found.</p>
+          <p className="mt-2 text-base text-app-muted/80">Upload a record to see it here.</p>
         </div>
       </section>
     </section>
