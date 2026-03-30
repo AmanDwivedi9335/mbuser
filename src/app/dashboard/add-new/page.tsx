@@ -49,32 +49,32 @@ function DocumentIcon() {
 
 export default function AddNewPage() {
   return (
-    <section className="min-h-[calc(100vh-7.5rem)] px-1 pb-6 text-app-text">
+    <section className="min-h-[calc(100vh-7.5rem)] px-0.5 pb-6 text-app-text sm:px-1">
       <div className="mx-auto w-full max-w-[1220px] space-y-7">
-        <header className="flex items-start gap-4 lg:items-center">
+        <header className="flex items-start gap-3 sm:gap-4 lg:items-center">
           <Link
             href="/dashboard"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-app-border bg-app-panel text-app-muted transition-colors hover:bg-app-surface"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-app-border bg-app-panel text-app-muted transition-colors hover:bg-app-surface sm:h-12 sm:w-12"
             aria-label="Go back to dashboard"
           >
             <BackIcon />
           </Link>
 
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Family Health Hub</h1>
+            <h1 className="text-xl font-bold tracking-tight sm:text-2xl">Family Health Hub</h1>
             <p className="mt-1 text-app-muted">Manage health records for your loved ones</p>
           </div>
         </header>
 
         <div className="grid items-stretch gap-6 xl:grid-cols-2">
-          <article className="flex h-full max-h-[270px] flex-col rounded-4xl border border-app-muted/10 bg-app-surface px-6 py-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:px-8">
+          <article className="flex h-full min-h-[370px] flex-col rounded-4xl border border-app-muted/10 bg-app-surface px-4 py-5 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:px-8 sm:py-6">
             <div className="flex flex-wrap items-start justify-between gap-6">
-              <div className="flex min-w-0 items-center gap-5">
-                <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-app-text text-5xl font-semibold text-white shadow-[0_8px_18px_rgba(42,21,59,0.25)]">
+              <div className="flex min-w-0 items-center gap-3 sm:gap-5">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-app-text text-3xl font-semibold text-white shadow-[0_8px_18px_rgba(42,21,59,0.25)] sm:h-24 sm:w-24 sm:text-5xl">
                   A
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-xl font-semibold leading-tight tracking-tight">Alex Johnson</p>
+                  <p className="truncate text-xl font-semibold leading-tight tracking-tight sm:text-3xl">Alex Johnson</p>
                   <p className="mt-2 text-base text-app-muted">Self • 34 years old</p>
                 </div>
               </div>

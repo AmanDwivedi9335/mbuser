@@ -110,14 +110,14 @@ export default function DashboardPage() {
 
   return (
     <section className="space-y-7">
-      <header className="flex items-start justify-between gap-4">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Health Overview</h1>
           <p className="mt-1 text-app-muted">
             Welcome back, <span className="font-semibold text-app-text">{headerName} (You)</span>
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 self-start sm:self-auto">
           <button
             type="button"
             className="flex h-12 w-12 items-center justify-center rounded-full border border-app-muted/25 bg-app-surface text-app-muted"
@@ -131,19 +131,19 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <section className="rounded-4xl border border-app-muted/10 bg-app-surface p-5 shadow-[0_2px_8px_rgba(42,21,59,0.06)]">
+      <section className="rounded-4xl border border-app-muted/10 bg-app-surface p-4 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:p-5">
         <p className="mb-4 inline-flex items-center gap-2 text-lg font-semibold uppercase tracking-wide text-app-muted/80">
           <UsersIcon className="h-5 w-5" aria-hidden="true" />
           Family Members
         </p>
-        <div className="flex flex-wrap items-start gap-8">
+        <div className="flex flex-wrap items-start gap-5 sm:gap-8">
           <FamilyMemberPill label={initialsFromName(currentMemberName)} caption="You" active />
           <FamilyMemberPill label="+" caption="Add New" href="/dashboard/add-new" />
         </div>
       </section>
 
       <section className="grid gap-6 md:grid-cols-2">
-        <article className="flex items-center justify-between rounded-4xl border border-app-muted/10 bg-app-surface p-6 shadow-[0_2px_8px_rgba(42,21,59,0.06)] md:max-w-md">
+        <article className="flex items-center justify-between rounded-4xl border border-app-muted/10 bg-app-surface p-4 shadow-[0_2px_8px_rgba(42,21,59,0.06)] sm:p-6 md:max-w-md">
           <div>
             <h2 className="text-lg font-semibold uppercase text-app-muted">Total Documents</h2>
             <p className="mt-2 text-4xl font-bold">{isLoadingRecords ? "..." : recordCount}</p>
@@ -160,7 +160,7 @@ export default function DashboardPage() {
           <span className="text-app-muted">◷</span>
           Recent Activity
         </h2>
-        <div className="rounded-4xl border border-dashed border-app-muted/30 bg-app-surface px-6 py-16 text-center">
+        <div className="rounded-4xl border border-dashed border-app-muted/30 bg-app-surface px-4 py-12 text-center sm:px-6 sm:py-16">
           <p className="text-xl text-app-muted">No recent documents found.</p>
           <p className="mt-2 text-base text-app-muted/80">Upload a record to see it here.</p>
         </div>

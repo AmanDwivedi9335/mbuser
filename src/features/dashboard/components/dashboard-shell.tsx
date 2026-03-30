@@ -16,7 +16,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
         <div className="flex min-h-screen min-w-0 flex-1 flex-col">
           <Topbar onOpenMobileSidebar={() => setMobileOpen(true)} />
-          <main className="flex-1 overflow-y-auto px-4 py-6 md:px-6">{children}</main>
+          <main className="flex-1 overflow-y-auto px-3 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:px-4 sm:py-6 md:px-6">{children}</main>
         </div>
       </div>
     </CurrentProfileProvider>
