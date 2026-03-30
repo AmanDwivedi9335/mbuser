@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AddFamilyMemberModal } from "@/features/dashboard/components/add-family-member-modal";
 
 function BackIcon() {
   return (
@@ -101,13 +102,7 @@ export default function AddNewPage() {
             </div>
           </article>
 
-          <button
-            type="button"
-            className="group flex min-h-[300px] flex-col items-center justify-center gap-4 rounded-[34px] border-2 border-dashed border-[#d6deeb] bg-[#f4f7fb] text-[#8ba0bf] transition-colors hover:border-[#98b4e5] hover:text-[#5f7fb1]"
-          >
-            <span className="flex h-22 w-22 items-center justify-center rounded-full bg-white text-7xl leading-none shadow-[0_8px_16px_rgba(79,101,131,0.12)]">+</span>
-            <span className="text-[42px] font-medium">Link Family Member</span>
-          </button>
+          <AddFamilyMemberModal />
         </div>
       </div>
     </section>
