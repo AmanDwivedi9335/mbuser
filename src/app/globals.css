@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fae9f8;
-  --foreground: #2a153b;
-  --surface: #ffeefd;
-  --muted: #6e4b80;
+  --background: #f3f6fb;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --muted: #52607a;
 }
 
 @theme inline {
-  --font-sans: Arial, Helvetica, sans-serif;
+  --font-sans: "Inter", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --color-app-bg: var(--background);
   --color-app-text: var(--foreground);
   --color-app-surface: var(--surface);
@@ -21,8 +21,11 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
+  font-family: "Inter", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% -15%, rgba(104, 157, 255, 0.3), transparent 38%),
+    radial-gradient(circle at 90% 105%, rgba(130, 214, 255, 0.24), transparent 35%),
+    linear-gradient(180deg, #f6f9ff 0%, #eef3fb 100%);
   color: var(--foreground);
   -webkit-tap-highlight-color: transparent;
   text-size-adjust: 100%;
@@ -30,20 +33,20 @@ body {
 
 .btn-brand {
   border: 0;
-  background-image: linear-gradient(135deg, #d81b60 0%, #7b1fa2 55%, #3b0aa3 100%);
+  background-image: linear-gradient(135deg, #3b82f6 0%, #5a7cff 48%, #7667ff 100%);
   color: #ffffff;
-  box-shadow: 0 10px 25px -14px rgba(59, 10, 163, 0.85);
-  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+  box-shadow: 0 12px 30px -18px rgba(37, 99, 235, 0.9);
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
 }
 
 .btn-brand:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 14px 26px -16px rgba(59, 10, 163, 0.9);
+  filter: brightness(1.05);
+  box-shadow: 0 16px 34px -19px rgba(37, 99, 235, 0.95);
   transform: translateY(-1px);
 }
 
 .btn-brand:focus-visible {
-  outline: 2px solid #7b1fa2;
+  outline: 2px solid #4f46e5;
   outline-offset: 2px;
 }
 
