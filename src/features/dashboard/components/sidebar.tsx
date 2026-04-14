@@ -35,9 +35,9 @@ type SidebarProps = {
 export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
   return (
     <>
-      <aside className="hidden w-64 shrink-0 border-r border-app-muted/20 bg-app-bg p-4 lg:block lg:h-screen lg:sticky lg:top-0">
-        <div className="mb-6 px-3">
-          <Image src="/ml_logo.png" alt="Medibank logo" width={140} height={40} priority />
+      <aside className="hidden w-55 shrink-0 border-r border-app-muted/20 bg-app-bg p-4 lg:block lg:h-screen lg:sticky lg:top-0">
+        <div className="mb-1 px-1">
+          <Image src="/ml_logo.png" alt="Medibank logo" width={100} height={30} priority />
         </div>
         <nav className="space-y-1" aria-label="Dashboard navigation">
           {NAV_ITEMS.map((item) => (
