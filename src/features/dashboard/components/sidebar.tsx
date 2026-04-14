@@ -13,6 +13,7 @@ import {
   UsersIcon,
 } from "@/components/ui/icons";
 import { NavItem } from "@/features/dashboard/components/nav-item";
+import Image from "next/image";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
@@ -35,7 +36,9 @@ export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
   return (
     <>
       <aside className="hidden w-64 shrink-0 border-r border-app-muted/20 bg-app-bg p-4 lg:block lg:h-screen lg:sticky lg:top-0">
-        <div className="mb-6 px-3 text-lg font-semibold">Medibank</div>
+        <div className="mb-6 px-3">
+          <Image src="/ml_logo.png" alt="Medibank logo" width={140} height={40} priority />
+        </div>
         <nav className="space-y-1" aria-label="Dashboard navigation">
           {NAV_ITEMS.map((item) => (
             <NavItem key={item.href} href={item.href} label={item.label} icon={item.icon} />
@@ -55,7 +58,7 @@ export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
         aria-label="Mobile dashboard navigation"
       >
         <div className="mb-6 flex items-center justify-between px-3">
-          <span className="text-lg font-semibold">Medibank</span>
+          <Image src="/ml_logo.png" alt="Medibank logo" width={140} height={40} priority />
           <button
             type="button"
             onClick={onCloseMobile}
