@@ -16,7 +16,7 @@ import {
 } from "@xyflow/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toPng } from "html-to-image";
-import { Download, Plus, Save, Upload, X } from "lucide-react";
+import { Download, Maximize2, Minimize2, Pen, Plus, Save, Upload, X } from "lucide-react";
 import "@xyflow/react/dist/style.css";
 
 import { sampleFamilyEdges, sampleFamilyNodes } from "../sample-data";
@@ -48,6 +48,7 @@ function FamilyTreeCanvas() {
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
 
   const selectedNode = useMemo(() => nodes.find((node) => node.id === selectedNodeId), [nodes, selectedNodeId]);
+  const isSelectedExpanded = selectedNode?.data.expanded ?? true;
 
   const onConnect = useCallback(
     (connection: Connection) => {
@@ -262,12 +263,15 @@ function FamilyTreeCanvas() {
         <button type="button" className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-3 py-2 text-sm font-semibold text-white" onClick={handleAddMember}>
           <Plus className="h-4 w-4" /> Add member
         </button>
-        <button type="button" className="rounded-xl bg-slate-900 px-3 py-2 text-sm font-semibold text-white" onClick={applyLayout}>Auto layout</button>
-        <button type="button" className="rounded-xl border border-slate-200 px-3 py-2 text-sm" onClick={handleEditMember} disabled={!selectedNode}>
-          Edit
+        <button type="button" className="rounded-xl bg-slate-900 px-3 py-2 text-sm font-semibold text-white" onClick={applyLayout}>
+          Auto layout
         </button>
-        <button type="button" className="rounded-xl border border-slate-200 px-3 py-2 text-sm" onClick={handleExpandCollapse} disabled={!selectedNode}>
-          Expand/Collapse
+        <button type="button" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm" onClick={handleEditMember} disabled={!selectedNode}>
+          <Pen className="h-4 w-4" /> Edit
+        </button>
+        <button type="button" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm" onClick={handleExpandCollapse} disabled={!selectedNode}>
+          {isSelectedExpanded ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          {isSelectedExpanded ? "Minimize" : "Maximize"}
         </button>
         <button type="button" className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700" onClick={handleDeleteMember} disabled={!selectedNode}>
           Delete
