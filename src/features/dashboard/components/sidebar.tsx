@@ -2,16 +2,12 @@
 
 import {
   AddIcon,
-  CalendarIcon,
   CloseIcon,
   FileIcon,
-  HeartIcon,
   HomeIcon,
-  PillIcon,
   SettingsIcon,
-  ShieldIcon,
-  UsersIcon,
 } from "@/components/ui/icons";
+import { NearbyMenu } from "@/features/dashboard/components/nearby-menu";
 import { NavItem } from "@/features/dashboard/components/nav-item";
 import Image from "next/image";
 
@@ -44,6 +40,7 @@ export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
             <NavItem key={item.href} href={item.href} label={item.label} icon={item.icon} />
           ))}
         </nav>
+        <NearbyMenu className="mt-4" />
       </aside>
 
       {mobileOpen ? (
@@ -73,6 +70,7 @@ export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
             <NavItem key={item.href} href={item.href} label={item.label} icon={item.icon} onClick={onCloseMobile} />
           ))}
         </nav>
+        <NearbyMenu className="mt-4" />
       </aside>
     </>
   );
