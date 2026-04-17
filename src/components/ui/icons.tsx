@@ -103,3 +103,16 @@ export const CloseIcon: IconComponent = (props) => (
     <path d="m18 6-12 12M6 6l12 12" />
   </BaseIcon>
 );
+
+export const PhoneIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.8 2.6a2 2 0 0 1-.4 2.1L9.3 10.7a16 16 0 0 0 4 4l1.3-1.2a2 2 0 0 1 2.1-.4c.8.4 1.7.7 2.6.8a2 2 0 0 1 1.7 2z" />
+  </BaseIcon>
+);
+
+export const DirectionIcon: IconComponent = (props) => (
+  <BaseIcon {...props}>
+    <path d="M21.6 3.4 14.8 20.6a1 1 0 0 1-1.9-.1L10.8 14 4.2 11.9a1 1 0 0 1-.1-1.9l17.2-6.8a.3.3 0 0 1 .3.2z" />
+    <path d="M10.8 14 21.6 3.4" />
+  </BaseIcon>
+);

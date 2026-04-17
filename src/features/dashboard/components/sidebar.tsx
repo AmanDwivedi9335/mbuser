@@ -2,15 +2,11 @@
 
 import {
   AddIcon,
-  CalendarIcon,
   CloseIcon,
+  DirectionIcon,
   FileIcon,
-  HeartIcon,
   HomeIcon,
-  PillIcon,
   SettingsIcon,
-  ShieldIcon,
-  UsersIcon,
 } from "@/components/ui/icons";
 import { NavItem } from "@/features/dashboard/components/nav-item";
 import Image from "next/image";
@@ -18,6 +14,7 @@ import Image from "next/image";
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
   { href: "/dashboard/add-new", label: "Family", icon: AddIcon },
+  { href: "/dashboard/nearby", label: "Near By", icon: DirectionIcon },
   // { href: "/dashboard/profiles", label: "Profiles", icon: UsersIcon },
   { href: "/dashboard/records", label: "Records", icon: FileIcon },
   // { href: "/dashboard/medications", label: "Medications", icon: PillIcon },
