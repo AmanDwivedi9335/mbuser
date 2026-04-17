@@ -22,21 +22,21 @@ function CategoryCard({ label, count, icon, tintClass, iconClass, featured = fal
   return (
     <article
       className={[
-        "relative overflow-hidden rounded-3xl px-5 py-4",
-        featured ? "min-h-44" : "min-h-36",
+        "group relative overflow-hidden rounded-[1.75rem] border border-white/60 px-5 py-5 shadow-[0_14px_35px_-20px_rgba(15,35,70,0.5)] backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5",
+        featured ? "min-h-44 sm:min-h-48" : "min-h-36",
         tintClass,
       ].join(" ")}
     >
-      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-current/20 bg-white/40 text-sm" aria-hidden="true">
+      <div className="flex h-9 w-9 items-center justify-center rounded-full border border-current/20 bg-white/45 text-sm backdrop-blur-sm" aria-hidden="true">
         {icon}
       </div>
 
-      <div className="mt-8">
-        <p className="text-5xl font-bold leading-none">{count}</p>
-        <p className="mt-1 text-sm font-semibold text-current/85">{label}</p>
+      <div className="mt-9">
+        <p className="text-4xl font-semibold leading-none sm:text-5xl">{count}</p>
+        <p className="mt-2 text-sm font-medium text-current/85">{label}</p>
       </div>
 
-      <span className={["pointer-events-none absolute bottom-1 right-2 text-7xl leading-none opacity-25", iconClass].join(" ")} aria-hidden="true">
+      <span className={["pointer-events-none absolute bottom-1 right-2 text-7xl leading-none opacity-20 transition-transform duration-300 group-hover:scale-110", iconClass].join(" ")} aria-hidden="true">
         {icon}
       </span>
     </article>
@@ -88,7 +88,7 @@ export default function RecordsPage() {
         label: "All Event Categories",
         count: records.length,
         icon: "◻",
-        tintClass: "bg-gradient-to-r from-[#08263f] via-[#0f6660] to-[#1a4ca2] text-white",
+        tintClass: "bg-gradient-to-br from-[#08263f] via-[#0f6660] to-[#1a4ca2] text-white",
         iconClass: "text-white/55",
         countBy: () => true,
         featured: true,
@@ -97,7 +97,7 @@ export default function RecordsPage() {
         label: "Lab Results",
         count: countByCategory((category) => category === "LAB_RESULT"),
         icon: "⚗",
-        tintClass: "bg-[#eadcf8] text-[#7b4bb3]",
+        tintClass: "bg-gradient-to-br from-[#f3ecfb] to-[#eadcf8] text-[#7b4bb3]",
         iconClass: "text-[#c89cf0]",
         countBy: (category) => category === "LAB_RESULT",
       },
@@ -105,7 +105,7 @@ export default function RecordsPage() {
         label: "Prescription",
         count: countByCategory((category) => category === "PRESCRIPTION"),
         icon: "💊",
-        tintClass: "bg-[#cdeedc] text-[#2f9368]",
+        tintClass: "bg-gradient-to-br from-[#e6f7ef] to-[#cdeedc] text-[#2f9368]",
         iconClass: "text-[#67c79a]",
         countBy: (category) => category === "PRESCRIPTION",
       },
@@ -113,7 +113,7 @@ export default function RecordsPage() {
         label: "Radiology",
         count: countByCategory((category) => category === "IMAGING"),
         icon: "🦴",
-        tintClass: "bg-[#f2e2c9] text-[#b06f2d]",
+        tintClass: "bg-gradient-to-br from-[#fdf1de] to-[#f2e2c9] text-[#b06f2d]",
         iconClass: "text-[#ebb981]",
         countBy: (category) => category === "IMAGING",
       },
@@ -121,7 +121,7 @@ export default function RecordsPage() {
         label: "Discharge Summary",
         count: countByCategory((category) => category === "DISCHARGE_SUMMARY"),
         icon: "📄",
-        tintClass: "bg-[#efddea] text-[#bd5f93]",
+        tintClass: "bg-gradient-to-br from-[#f8eaf3] to-[#efddea] text-[#bd5f93]",
         iconClass: "text-[#e6a4cc]",
         countBy: (category) => category === "DISCHARGE_SUMMARY",
       },
@@ -129,7 +129,7 @@ export default function RecordsPage() {
         label: "Insurance",
         count: countByCategory((category) => category === "INSURANCE"),
         icon: "🛡",
-        tintClass: "bg-[#dce8f8] text-[#4a77ba]",
+        tintClass: "bg-gradient-to-br from-[#ebf2ff] to-[#dce8f8] text-[#4a77ba]",
         iconClass: "text-[#95b4e9]",
         countBy: (category) => category === "INSURANCE",
       },
@@ -137,7 +137,7 @@ export default function RecordsPage() {
         label: "Vaccination",
         count: countByCategory((category) => category === "VACCINATION"),
         icon: "📋",
-        tintClass: "bg-[#efdeea] text-[#be628f]",
+        tintClass: "bg-gradient-to-br from-[#f8eaf3] to-[#efdeea] text-[#be628f]",
         iconClass: "text-[#e8abc9]",
         countBy: (category) => category === "VACCINATION",
       },
@@ -145,7 +145,7 @@ export default function RecordsPage() {
         label: "Bill",
         count: countByCategory((category) => category === "BILLING"),
         icon: "🧾",
-        tintClass: "bg-[#efdeea] text-[#be628f]",
+        tintClass: "bg-gradient-to-br from-[#f8eaf3] to-[#efdeea] text-[#be628f]",
         iconClass: "text-[#e8abc9]",
         countBy: (category) => category === "BILLING",
       },
@@ -153,7 +153,7 @@ export default function RecordsPage() {
         label: "Notes",
         count: 0,
         icon: "📄",
-        tintClass: "bg-[#efdeea] text-[#be628f]",
+        tintClass: "bg-gradient-to-br from-[#f8eaf3] to-[#efdeea] text-[#be628f]",
         iconClass: "text-[#e8abc9]",
         countBy: () => false,
       },
@@ -161,7 +161,7 @@ export default function RecordsPage() {
         label: "Other",
         count: countByCategory((category) => category === "OTHER"),
         icon: "📄",
-        tintClass: "bg-[#efdeea] text-[#be628f]",
+        tintClass: "bg-gradient-to-br from-[#f8eaf3] to-[#efdeea] text-[#be628f]",
         iconClass: "text-[#e8abc9]",
         countBy: (category) => category === "OTHER",
       },
@@ -229,20 +229,21 @@ export default function RecordsPage() {
 
   return (
     <section className="space-y-5">
-      <header className="space-y-1">
-        <h1 className="text-3xl font-bold tracking-tight text-app-text">{isCategoriesView ? "Categories" : "Timeline"}</h1>
-        <p className="text-sm text-app-muted">Secure Medibank Storage</p>
+      <header className="rounded-[1.75rem] border border-white/60 bg-gradient-to-r from-[#08263f] via-[#0f6660] to-[#1a4ca2] px-5 py-6 text-white shadow-[0_20px_45px_-28px_rgba(8,38,63,0.9)] sm:px-7">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/75">Health Vault</p>
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight">{isCategoriesView ? "Records by category" : "Records timeline"}</h1>
+        <p className="mt-2 text-sm text-white/85">Secure Medibank Storage</p>
       </header>
 
-      <div className="relative z-20 inline-flex w-full max-w-full items-center rounded-full border border-app-muted/20 bg-white/70 p-1 text-sm shadow-sm sm:w-fit">
+      <div className="relative z-20 inline-flex w-full max-w-full items-center rounded-full border border-white/70 bg-white/70 p-1.5 text-sm shadow-[0_12px_30px_-20px_rgba(15,35,70,0.6)] backdrop-blur-xl sm:w-fit">
         <button
           type="button"
           onClick={() => setViewMode("categories")}
           aria-pressed={viewMode === "categories"}
           aria-controls="records-view-panel"
           className={[
-            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
-            viewMode === "categories" ? "bg-app-surface text-app-text" : "text-app-muted",
+            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
+            viewMode === "categories" ? "bg-white text-[#11335f] shadow-sm" : "text-app-muted",
           ].join(" ")}
         >
           <FileIcon className="h-4 w-4" aria-hidden="true" />
@@ -254,8 +255,8 @@ export default function RecordsPage() {
           aria-pressed={viewMode === "timeline"}
           aria-controls="records-view-panel"
           className={[
-            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
-            viewMode === "timeline" ? "bg-app-surface text-app-text" : "text-app-muted",
+            "relative z-10 inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a4ca2]/40 sm:flex-none sm:px-8",
+            viewMode === "timeline" ? "bg-white text-[#11335f] shadow-sm" : "text-app-muted",
           ].join(" ")}
         >
           <MenuIcon className="h-4 w-4" aria-hidden="true" />
@@ -267,7 +268,7 @@ export default function RecordsPage() {
       {isLoading ? <p className="text-sm text-app-muted">Loading categories...</p> : null}
 
       {viewMode === "categories" ? (
-        <div id="records-view-panel" className="grid gap-2 md:grid-cols-2">
+        <div id="records-view-panel" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {categoryCards.map((card) => (
             <CategoryCard
               key={card.label}
@@ -281,9 +282,12 @@ export default function RecordsPage() {
           ))}
         </div>
       ) : (
-        <div id="records-view-panel" className="space-y-3 rounded-3xl border border-app-muted/15 bg-white/40 p-4 sm:p-6">
-          <div className="flex flex-col gap-3 md:flex-row">
-            <label className="flex min-h-11 flex-1 items-center gap-2 rounded-full border border-app-muted/15 bg-app-surface/55 px-4">
+        <div
+          id="records-view-panel"
+          className="space-y-4 rounded-[1.75rem] border border-white/60 bg-white/60 p-4 shadow-[0_20px_40px_-30px_rgba(15,35,70,0.9)] backdrop-blur-xl sm:p-6"
+        >
+          <div className="flex flex-col gap-3 lg:flex-row">
+            <label className="flex min-h-12 flex-1 items-center gap-2 rounded-full border border-app-muted/15 bg-app-surface/70 px-4 shadow-inner">
               <span className="text-app-muted" aria-hidden="true">
                 🔎
               </span>
@@ -294,13 +298,13 @@ export default function RecordsPage() {
                 className="w-full bg-transparent text-sm outline-none"
               />
             </label>
-            <div className="inline-flex min-h-11 items-center rounded-full border border-app-muted/15 bg-app-surface/55 px-4 text-sm font-semibold">
+            <div className="inline-flex min-h-12 items-center rounded-full border border-app-muted/15 bg-app-surface/70 px-4 text-sm font-semibold text-app-text">
               {selectedProfile?.fullName ?? "No profile selected"}
             </div>
           </div>
 
           <div className="grid gap-3 md:grid-cols-2">
-            <label className="flex min-h-11 items-center rounded-full border border-app-muted/15 bg-app-surface/55 px-4">
+            <label className="flex min-h-12 items-center rounded-full border border-app-muted/15 bg-app-surface/70 px-4 shadow-inner">
               <select
                 value={doctorFilter}
                 onChange={(event) => setDoctorFilter(event.target.value)}
@@ -315,7 +319,7 @@ export default function RecordsPage() {
               </select>
             </label>
 
-            <label className="flex min-h-11 items-center gap-2 rounded-full border border-app-muted/15 bg-app-surface/55 px-4">
+            <label className="flex min-h-12 items-center gap-2 rounded-full border border-app-muted/15 bg-app-surface/70 px-4 shadow-inner">
               <CalendarIcon className="h-4 w-4 text-app-muted" aria-hidden="true" />
               <select value={dateRange} onChange={(event) => setDateRange(event.target.value)} className="w-full bg-transparent text-sm font-medium outline-none">
                 <option value="ALL">Date Range</option>
@@ -326,10 +330,10 @@ export default function RecordsPage() {
             </label>
           </div>
 
-          <div className="rounded-3xl border border-app-muted/15 bg-[#edf1f8] p-3 sm:p-6">
+          <div className="rounded-[1.5rem] border border-app-muted/10 bg-gradient-to-b from-[#f7f9fd] to-[#edf1f8] p-3 shadow-inner sm:p-6">
             <div className="border-l border-app-muted/20 pl-4 sm:pl-8">
               {timelineRecords.length === 0 ? (
-                <div className="rounded-3xl border border-app-muted/10 bg-white/60 px-4 py-14 text-center">
+                <div className="rounded-[1.25rem] border border-app-muted/10 bg-white/75 px-4 py-14 text-center backdrop-blur-sm">
                   <CalendarIcon className="mx-auto h-8 w-8 text-app-muted/45" aria-hidden="true" />
                   <h3 className="mt-4 text-3xl font-semibold text-app-text">No history found</h3>
                   <p className="mt-2 text-sm text-app-muted">No medical records available for this filter.</p>
@@ -337,7 +341,7 @@ export default function RecordsPage() {
               ) : (
                 <ol className="space-y-4">
                   {timelineRecords.map((record) => (
-                    <li key={record.id} className="relative rounded-2xl border border-app-muted/15 bg-white/75 p-4">
+                    <li key={record.id} className="relative rounded-[1.15rem] border border-app-muted/15 bg-white/85 p-4 shadow-[0_12px_35px_-25px_rgba(15,35,70,0.75)]">
                       <span className="absolute -left-[2.15rem] top-6 h-3 w-3 rounded-full bg-[#1a4ca2]" aria-hidden="true" />
                       <p className="text-xs font-semibold uppercase tracking-wide text-app-muted">{categoryLabelByValue[record.category] ?? "Record"}</p>
                       <h3 className="mt-1 text-base font-semibold text-app-text">{record.title}</h3>
