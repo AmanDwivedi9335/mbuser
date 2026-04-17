@@ -3,6 +3,7 @@
 import {
   AddIcon,
   CloseIcon,
+  DirectionIcon,
   FileIcon,
   HomeIcon,
   SettingsIcon,
@@ -14,6 +15,7 @@ import Image from "next/image";
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: HomeIcon },
   { href: "/dashboard/add-new", label: "Family", icon: AddIcon },
+  { href: "/dashboard/nearby", label: "Near By", icon: DirectionIcon },
   // { href: "/dashboard/profiles", label: "Profiles", icon: UsersIcon },
   { href: "/dashboard/records", label: "Records", icon: FileIcon },
   // { href: "/dashboard/medications", label: "Medications", icon: PillIcon },
